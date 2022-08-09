@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:recipe_project/details.dart';
 import 'package:recipe_project/model/recipe_api.dart';
 import 'package:recipe_project/model/recipe_list.dart';
 import 'package:recipe_project/widgets/recipe.dart';
@@ -11,8 +12,10 @@ class Homepage extends StatefulWidget {
 }
 
 class _HomepageState extends State<Homepage> {
-  late List<RecipeModel> listRecipes;
   bool isLoading = true;
+  late List<RecipeModel> listRecipes;
+  late List<RecipeModel> _serchResult = [];
+  TextEditingController controller = new TextEditingController();
 
   @override
   void initState() {
@@ -29,6 +32,11 @@ class _HomepageState extends State<Homepage> {
     print(listRecipes);
   }
 
+  void navigateToDetails(BuildContext context, RecipeModel data) {
+    Navigator.push(context,
+        MaterialPageRoute(builder: ((context) => RecipeDetails(model: data))));
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -38,7 +46,7 @@ class _HomepageState extends State<Homepage> {
             children: [
               Icon(Icons.restaurant_menu),
               SizedBox(width: 10),
-              Text('Food Recipe Test')
+              Text('Food Recipe')
             ],
           ),
         ),
@@ -47,11 +55,15 @@ class _HomepageState extends State<Homepage> {
             : ListView.builder(
                 itemCount: listRecipes.length,
                 itemBuilder: (context, index) {
-                  return RecipeCard(
-                      title: listRecipes[index].name,
-                      cookTime: listRecipes[index].totalTime,
-                      rating: listRecipes[index].rating.toString(),
-                      thumbnailUrl: listRecipes[index].images);
+                  return GestureDetector(
+                      onTap: () {
+                        navigateToDetails(context, listRecipes[index]);
+                      },
+                      child: RecipeCard(
+                          title: listRecipes[index].name,
+                          cookTime: listRecipes[index].totalTime,
+                          rating: listRecipes[index].rating.toString(),
+                          thumbnailUrl: listRecipes[index].images));
                 },
               ));
   }
