@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:recipe_project/counter_cubit.dart';
 import 'package:recipe_project/details.dart';
 import 'package:recipe_project/model/recipe_api.dart';
 import 'package:recipe_project/model/recipe_list.dart';
+import 'package:recipe_project/widgets/bottom_nav_bar.dart';
 import 'package:recipe_project/widgets/recipe.dart';
 
 class Homepage extends StatefulWidget {
@@ -49,59 +51,86 @@ class _HomepageState extends State<Homepage> {
         leading: Icon(Icons.menu),
         actions: [
           Padding(
-            padding: const EdgeInsets.only(right: 20.0),
+            padding: const EdgeInsets.only(right: 2.0),
             child: Icon(Icons.person),
           ),
         ],
       ),
-      bottomNavigationBar: BottomNavigationBar(
-        items: [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: '',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.favorite),
-            label: '',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.notifications),
-            label: '',
-          ),
-        ],
-      ),
-      body: Container(
-        child: isLoading
-            ? Center(child: CircularProgressIndicator())
-            : ListView.builder(
-                itemCount: listRecipes.length,
-                itemBuilder: (context, index) {
-                  return GestureDetector(
-                    onTap: () {
-                      navigateToDetails(context, listRecipes[index]);
-                    },
-                    child: Container(
-                      margin: EdgeInsets.only(
-                        left: 10.0,
-                        top: 10.0,
-                        bottom: 10.0,
-                      ),
-                      width: size.width * 0.8,
-                      height: 185,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      child: RecipeCard(
-                        title: listRecipes[index].name,
-                        cookTime: listRecipes[index].totalTime,
-                        rating: listRecipes[index].rating.toString(),
-                        thumbnailUrl: listRecipes[index].images,
-                      ),
-                    ),
-                  );
-                },
-              ),
-      ),
+
+//       body: isLoading
+//           ? Center(child: CircularProgressIndicator())
+//           : ListView.builder(
+//               scrollDirection: Axis.horizontal,
+//               itemCount: listRecipes.length,
+//               itemBuilder: (context, index) {
+//                 return GestureDetector(
+//                   onTap: () {
+//                     navigateToDetails(context, listRecipes[index]);
+//                   },
+//                   child: RecipeCard(
+//                     title: listRecipes[index].name,
+//                     cookTime: listRecipes[index].totalTime,
+//                     rating: listRecipes[index].rating.toString(),
+//                     thumbnailUrl: listRecipes[index].images,
+//                   ),
+//                 );
+//               },
+//             ),
+//     );
+//   }
+// }
+
+      body: isLoading
+          ? Center(child: CircularProgressIndicator())
+          : ListView.builder(
+              scrollDirection: Axis.horizontal,
+              itemCount: listRecipes.length,
+              itemBuilder: (context, index) {
+                return GestureDetector(
+                  onTap: () {
+                    navigateToDetails(context, listRecipes[index]);
+                  },
+                  child: RecipeCard(
+                    title: listRecipes[index].name,
+                    cookTime: listRecipes[index].totalTime,
+                    rating: listRecipes[index].rating.toString(),
+                    thumbnailUrl: listRecipes[index].images,
+                  ),
+                );
+              },
+            ),
     );
   }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+          // child: isLoading
+          //     ? Center(child: CircularProgressIndicator())
+          //     : ListView.builder(
+          //         scrollDirection: Axis.horizontal,
+          //         itemCount: listRecipes.length,
+          //         itemBuilder: (context, index) {
+          //           return GestureDetector(
+          //             onTap: () {
+          //               navigateToDetails(context, listRecipes[index]);
+          //             },
+          //             child: RecipeCard(
+          //               title: listRecipes[index].name,
+          //               cookTime: listRecipes[index].totalTime,
+          //               rating: listRecipes[index].rating.toString(),
+          //               thumbnailUrl: listRecipes[index].images,
+          //             ),
+          //           );
+          //         },
+          //       ),

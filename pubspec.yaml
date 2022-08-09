@@ -17,6 +17,8 @@ dependencies:
   google_fonts: ^3.0.1
   english_words: ^3.1.0
   http: ^0.13.5
+  circle_nav_bar: ^1.0.2
+  equatable: ^2.0.3
 
 dev_dependencies:
   flutter_test:
