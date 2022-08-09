@@ -19,12 +19,13 @@ class RecipeCard extends StatelessWidget {
     return SingleChildScrollView(
       child: Container(
         padding: EdgeInsets.all(12),
-        width: 200,
+        width: 20,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(12),
           color: Colors.black54,
         ),
-        child: Column(
+        child: ListView(
+          scrollDirection: Axis.horizontal,
           children: [
             Image.network(thumbnailUrl),
           ],
