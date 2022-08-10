@@ -27,23 +27,93 @@ class _RecipeDetailsState extends State<RecipeDetails> {
       ),
       body: Center(
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Container(
+            // Container(
+            ClipRRect(
+              borderRadius: BorderRadius.only(
+                bottomLeft: Radius.circular(68),
+                bottomRight: Radius.circular(68),
+              ),
               child: Image.network(
                 widget.model.images,
+                width: 400.0,
+                fit: BoxFit.fill,
               ),
             ),
-            Text(widget.model.name),
-            SizedBox(height: 10),
-            Text(widget.model.totalTime),
             SizedBox(height: 15),
-            Text(widget.model.totalServing.toString()),
-            SizedBox(height: 15),
+            Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: Text(
+                widget.model.name,
+                style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 25,
+                    color: Colors.teal.shade600),
+                textAlign: TextAlign.left,
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Text(
+                widget.model.description,
+                style: TextStyle(fontSize: 16),
+                textAlign: TextAlign.justify,
+              ),
+            ),
+            const SizedBox(height: 15),
+            Container(
+                child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Icon(
+                  Icons.timer_rounded,
+                  color: Colors.green[200],
+                  size: 24,
+                ),
+                SizedBox(width: 10),
+                Text(
+                  widget.model.totalTime,
+                  style: TextStyle(fontSize: 18),
+                )
+              ],
+            )),
+            SizedBox(
+              height: 10,
+            ),
+            Container(
+                child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Icon(
+                  Icons.food_bank_outlined,
+                  color: Colors.green[200],
+                  size: 24,
+                ),
+                SizedBox(width: 10),
+                Text(
+                  widget.model.totalServing.toString(),
+                  style: TextStyle(fontSize: 18),
+                ),
+                SizedBox(width: 8),
+                Text(
+                  'people',
+                  style: TextStyle(fontSize: 18),
+                ),
+              ],
+            )),
+            const SizedBox(height: 15),
             ElevatedButton(
-              onPressed: _openRecipe,
-              child: const Text('Open Recipe on Browser'),
-            )
+                onPressed: _openRecipe,
+                child: const Text(
+                  'Open Recipe on Yummly',
+                  style: TextStyle(fontSize: 16, color: Colors.white),
+                ),
+                style: ElevatedButton.styleFrom(
+                  primary: Colors.teal,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(16),
+                  ),
+                ))
           ],
         ),
       ),

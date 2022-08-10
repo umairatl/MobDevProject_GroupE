@@ -37,22 +37,19 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-return MaterialApp(
-            title: 'Recipe Apps',
-            debugShowCheckedModeBanner: false,
-            theme: ThemeData.light(),
-            darkTheme: ThemeData.dark(),
-            // home: const MyHomePage(title: 'teststt'),
-
-            initialRoute: "/",
-            onGenerateRoute: RouteGenerator().generateRoute,
-            routes: {
-              '/homepage': (context) => const Homepage(),
-              '/saved': (context) => saved(),
-              '/user': (context) => user(),
-               
-            },
-          );
-        }
+    return MaterialApp(
+      title: 'Recipe Apps',
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData(
+        primarySwatch: Colors.teal,
+      ),
+      initialRoute: "/",
+      onGenerateRoute: RouteGenerator().generateRoute,
+      routes: {
+        '/homepage': (context) => const Homepage(),
+        '/saved': (context) => saved(),
+        '/user': (context) => user(),
+      },
+    );
   }
-
+}
