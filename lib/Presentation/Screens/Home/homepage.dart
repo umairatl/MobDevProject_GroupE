@@ -79,7 +79,7 @@ class _HomepageState extends State<Homepage> {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
-      backgroundColor: Colors.black54,
+      backgroundColor: Colors.teal,
       appBar: AppBar(
         elevation: 0,
         backgroundColor: Colors.transparent,
@@ -96,7 +96,7 @@ class _HomepageState extends State<Homepage> {
                       hintText: 'Search Recipe Title',
                       border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(20),
-                          borderSide: const BorderSide(color: Colors.blue))),
+                          borderSide: const BorderSide(color: Colors.green))),
                   onChanged: searchRecipe,
                 ),
                 Expanded(
@@ -104,11 +104,11 @@ class _HomepageState extends State<Homepage> {
                     scrollDirection: Axis.horizontal,
                     itemCount: listRecipes.length,
                     itemBuilder: (context, index) {
-                      return GestureDetector(
-                        onTap: () {
-                          navigateToDetails(context, listRecipes[index]);
-                        },
+                      return SizedBox(
                         child: RecipeCard(
+                          onTap: () {
+                            navigateToDetails(context, listRecipes[index]);
+                          },
                           title: listRecipes[index].name,
                           cookTime: listRecipes[index].totalTime,
                           rating: listRecipes[index].rating.toString(),

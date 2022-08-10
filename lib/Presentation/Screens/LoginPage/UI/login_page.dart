@@ -58,7 +58,8 @@ class _MyHomePageState extends State<MyHomePage> {
             buildErrorLayout();
           } else if (state is AuthLoaded) {
             clearTextData();
-            Navigator.of(context).pushNamed('/homepage');
+            Navigator.of(context)
+                .pushNamedAndRemoveUntil('/homepage', (route) => false);
           }
         },
         builder: (context, state) {
