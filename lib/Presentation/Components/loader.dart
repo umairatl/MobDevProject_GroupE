@@ -19,13 +19,13 @@ class LoadingWidget extends StatelessWidget {
           child: Container(
             width: double.infinity,
             height: double.infinity,
-            color: Colors.grey.withOpacity(0.55),
+            color: Colors.green,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: const [
                 CircularProgressIndicator(),
                 WidthSpacer(myWidth: 25.50),
-                Text("Loading..."),
+                Text("Welcome Back!"),
               ],
             ),
           ),

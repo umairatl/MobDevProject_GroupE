@@ -10,18 +10,18 @@ class TextData extends StatelessWidget {
     return RichText(
       text: TextSpan(
         text: 'YUMLYY ',
-        style:  TextStyle(
+        style: TextStyle(
             fontStyle: FontStyle.italic,
             fontSize: 20.00,
-             fontWeight: FontWeight.bold,
-             color: Colors.black),
+            fontWeight: FontWeight.bold,
+            color: Colors.green),
         children: <TextSpan>[
           TextSpan(
             text: message,
             style: const TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: 20.00,
-                color: Colors.black),
+                color: Colors.green),
           ),
         ],
       ),

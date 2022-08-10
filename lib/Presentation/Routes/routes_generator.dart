@@ -8,7 +8,7 @@ import '../Screens/LoginPage/UI/login_page.dart';
 
 class RouteGenerator {
   final AuthBloc _authBloc = AuthBloc();
-  final DashboardBloc _dashboardBloc = DashboardBloc();
+  // final DashboardBloc _dashboardBloc = DashboardBloc();
 
   Route<dynamic> generateRoute(RouteSettings settings) {
     final args = settings.arguments;
@@ -22,15 +22,15 @@ class RouteGenerator {
           ),
         );
 
-      case '/dashboard':
-        if (args is String) {
-          return MaterialPageRoute(
-            builder: (_) => BlocProvider<DashboardBloc>.value(
-              value: _dashboardBloc,
-              child: Dashboard(title: "Dashboard", username: args),
-            ),
-          );
-        }
+        // case '/dashboard':
+        //   if (args is String) {
+        //     return MaterialPageRoute(
+        //       builder: (_) => BlocProvider<DashboardBloc>.value(
+        //         value: _dashboardBloc,
+        //         child: Dashboard(title: "Dashboard", username: args),
+        //       ),
+        //     );
+        //   }
         return _errorRoute();
 
       default:
