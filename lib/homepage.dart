@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:recipe_project/counter_cubit.dart';
@@ -28,11 +30,29 @@ class _HomepageState extends State<Homepage> {
   }
 
   Future<void> getRecipes() async {
-    listRecipes = await RecipeAPI.fetchRecipe();
-    setState(() {
-      isLoading = false;
-    });
-    print(listRecipes);
+    try {
+      listRecipes = await RecipeAPI.fetchRecipe();
+      print(listRecipes);
+    } catch (e, st) {
+      listRecipes = [];
+      print(e);
+      print(st);
+      if (mounted) {
+        showDialog(
+          context: context,
+          builder: (context) {
+            return const AlertDialog(
+              title: Text("Error"),
+              content: Text("Cannot load the data"),
+            );
+          },
+        );
+      }
+    } finally {
+      setState(() {
+        isLoading = false;
+      });
+    }
   }
 
   void navigateToDetails(BuildContext context, RecipeModel data) {
