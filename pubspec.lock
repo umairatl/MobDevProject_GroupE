@@ -60,8 +60,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.0.2"
-=======
->>>>>>> ab773c5 (chg)
   clock:
     dependency: transitive
     description:
@@ -245,7 +243,8 @@ packages:
 =======
 
     version: "1.8.2"
->>>>>>> 7f3ac6c (error)
+<<<<<<< HEAD
+>>>>>>> 7fdf4a8 (chg)
   path_provider:
     dependency: transitive
     description:
@@ -437,8 +436,8 @@ packages:
 =======
 
     version: "0.4.12"
-
->>>>>>> 7f3ac6c (error)
+<<<<<<< HEAD
+>>>>>>> 7fdf4a8 (chg)
   theme_manager:
     dependency: "direct main"
     description:
