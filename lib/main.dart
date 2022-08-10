@@ -21,12 +21,8 @@
 // }
 
 import 'package:flutter/material.dart';
-import 'package:recipe_project/Presentation/Screens/LoginPage/UI/login_page.dart';
 import 'package:recipe_project/homepage.dart';
-
 import 'Presentation/Routes/routes_generator.dart';
-
-// import 'Presentation/Routes/routes_generator.dart';
 
 void main() {
   runApp(const MyApp());
@@ -38,11 +34,9 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Overlay Loader',
+      title: 'Recipe Apps',
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
+      theme: ThemeData.dark(),
       // home: const MyHomePage(title: 'teststt'),
       initialRoute: "/",
       onGenerateRoute: RouteGenerator().generateRoute,
