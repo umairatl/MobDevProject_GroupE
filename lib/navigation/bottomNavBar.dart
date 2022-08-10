@@ -4,6 +4,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:recipe_project/Presentation/Screens/Home/homepage.dart';
+import 'package:animate_do/animate_do.dart';
 
 
 enum BottomItems { Home, Saved, User }

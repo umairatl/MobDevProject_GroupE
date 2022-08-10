@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:recipe_project/model/recipe_list.dart';
 import 'package:url_launcher/url_launcher.dart';
+
+import 'package:recipe_project/model/recipe_list.dart';
 
 class RecipeDetails extends StatefulWidget {
   const RecipeDetails({required this.model, Key? key}) : super(key: key);
