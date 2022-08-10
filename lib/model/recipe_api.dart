@@ -13,7 +13,7 @@ class RecipeAPI {
       "x-rapidapi-host": "yummly2.p.rapidapi.com",
       "useQueryString": "true"
     });
-
+    print(response);
     Map data = jsonDecode(response.body);
     List _temp = [];
 

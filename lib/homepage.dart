@@ -14,7 +14,7 @@ class Homepage extends StatefulWidget {
 class _HomepageState extends State<Homepage> {
   bool isLoading = true;
   late List<RecipeModel> listRecipes;
-  late List<RecipeModel> _serchResult = [];
+  late List<RecipeModel> listRecipes2;
   TextEditingController controller = new TextEditingController();
 
   @override
@@ -26,6 +26,7 @@ class _HomepageState extends State<Homepage> {
 
   Future<void> getRecipes() async {
     listRecipes = await RecipeAPI.fetchRecipe();
+    listRecipes2 = await RecipeAPI.fetchRecipe();
     setState(() {
       isLoading = false;
     });
@@ -35,6 +36,15 @@ class _HomepageState extends State<Homepage> {
   void navigateToDetails(BuildContext context, RecipeModel data) {
     Navigator.push(context,
         MaterialPageRoute(builder: ((context) => RecipeDetails(model: data))));
+  }
+
+  void searchRecipe(String query) {
+    final suggestions = listRecipes2.where((recipe) {
+      final recipeName = recipe.name.toLowerCase();
+      final input = query.toLowerCase();
+      return recipeName.contains(input);
+    }).toList();
+    setState(() => listRecipes = suggestions);
   }
 
   @override
@@ -52,19 +62,33 @@ class _HomepageState extends State<Homepage> {
         ),
         body: isLoading
             ? Center(child: CircularProgressIndicator())
-            : ListView.builder(
-                itemCount: listRecipes.length,
-                itemBuilder: (context, index) {
-                  return GestureDetector(
-                      onTap: () {
-                        navigateToDetails(context, listRecipes[index]);
-                      },
-                      child: RecipeCard(
-                          title: listRecipes[index].name,
-                          cookTime: listRecipes[index].totalTime,
-                          rating: listRecipes[index].rating.toString(),
-                          thumbnailUrl: listRecipes[index].images));
-                },
-              ));
+            : Column(children: [
+                TextField(
+                  controller: controller,
+                  decoration: InputDecoration(
+                      prefixIcon: const Icon(Icons.search),
+                      hintText: 'Search Recipe Title',
+                      border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(20),
+                          borderSide: const BorderSide(color: Colors.blue))),
+                  onChanged: searchRecipe,
+                ),
+                Expanded(
+                  child: ListView.builder(
+                    itemCount: listRecipes.length,
+                    itemBuilder: (context, index) {
+                      return GestureDetector(
+                          onTap: () {
+                            navigateToDetails(context, listRecipes[index]);
+                          },
+                          child: RecipeCard(
+                              title: listRecipes[index].name,
+                              cookTime: listRecipes[index].totalTime,
+                              rating: listRecipes[index].rating.toString(),
+                              thumbnailUrl: listRecipes[index].images));
+                    },
+                  ),
+                ),
+              ]));
   }
 }
