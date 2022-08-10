@@ -37,6 +37,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+<<<<<<< HEAD
 return MaterialApp(
             title: 'Recipe Apps',
             debugShowCheckedModeBanner: false,
@@ -54,5 +55,17 @@ return MaterialApp(
             },
           );
         }
+=======
+    return MaterialApp(
+      title: 'Recipe Apps',
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData(
+        primarySwatch: Colors.teal,
+      ),
+      initialRoute: "/",
+      onGenerateRoute: RouteGenerator().generateRoute,
+      routes: {'/homepage': (context) => const Homepage()},
+    );
+>>>>>>> 322f5f7 (details ui)
   }
 
