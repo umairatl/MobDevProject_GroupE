@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:recipe_project/model/recipe_list.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class RecipeDetails extends StatefulWidget {
   const RecipeDetails({required this.model, Key? key}) : super(key: key);
@@ -10,9 +11,16 @@ class RecipeDetails extends StatefulWidget {
 }
 
 class _RecipeDetailsState extends State<RecipeDetails> {
-  
   @override
   Widget build(BuildContext context) {
+    final Uri _url = Uri.parse(widget.model.urlMenu);
+
+    Future<void> _openRecipe() async {
+      if (!await launchUrl(_url)) {
+        throw 'Could not open the recipe';
+      }
+    }
+
     return Scaffold(
       appBar: AppBar(
         title: const Text('Recipe Details'),
@@ -32,12 +40,10 @@ class _RecipeDetailsState extends State<RecipeDetails> {
             SizedBox(height: 15),
             Text(widget.model.totalServing.toString()),
             SizedBox(height: 15),
-            Container(
-                child: ElevatedButton(
-                    onPressed: () {
-                      var url = widget.model.urlMenu;
-                    },
-                    child: new Text('Open Recipe')))
+            ElevatedButton(
+              onPressed: _openRecipe,
+              child: const Text('Open Recipe on Browser'),
+            )
           ],
         ),
       ),

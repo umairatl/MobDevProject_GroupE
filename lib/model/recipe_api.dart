@@ -13,6 +13,7 @@ class RecipeAPI {
       "x-rapidapi-host": "yummly2.p.rapidapi.com",
       "useQueryString": "true"
     });
+
     if (response.statusCode != 200) {
       throw Exception("Error happen");
     }
