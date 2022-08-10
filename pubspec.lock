@@ -35,8 +35,24 @@ packages:
       name: characters
       url: "https://pub.dartlang.org"
     source: hosted
+<<<<<<< HEAD
     version: "1.2.1"
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+    version: "1.2.0"
+  charcode:
+    dependency: transitive
+    description:
+      name: charcode
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.3.1"
+=======
+    version: "1.2.1"
+<<<<<<< HEAD
+>>>>>>> 7fdf4a8 (chg)
+>>>>>>> 7f3ac6c (error)
   circle_nav_bar:
     dependency: "direct main"
     description:
@@ -94,8 +110,17 @@ packages:
       name: fake_async
       url: "https://pub.dartlang.org"
     source: hosted
+<<<<<<< HEAD
     version: "1.3.1"
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+    version: "1.3.0"
+=======
+    version: "1.3.1"
+<<<<<<< HEAD
+>>>>>>> 7fdf4a8 (chg)
+>>>>>>> 7f3ac6c (error)
   ffi:
     dependency: transitive
     description:
@@ -110,8 +135,12 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "6.1.2"
+<<<<<<< HEAD
 =======
 >>>>>>> ab773c5 (chg)
+=======
+
+>>>>>>> 7f3ac6c (error)
   flutter:
     dependency: "direct main"
     description: flutter
@@ -210,8 +239,13 @@ packages:
       name: path
       url: "https://pub.dartlang.org"
     source: hosted
+<<<<<<< HEAD
     version: "1.8.2"
 <<<<<<< HEAD
+=======
+
+    version: "1.8.2"
+>>>>>>> 7f3ac6c (error)
   path_provider:
     dependency: transitive
     description:
@@ -282,8 +316,12 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "4.2.4"
+<<<<<<< HEAD
 =======
 >>>>>>> ab773c5 (chg)
+=======
+
+>>>>>>> 7f3ac6c (error)
   provider:
     dependency: transitive
     description:
@@ -393,8 +431,14 @@ packages:
       name: test_api
       url: "https://pub.dartlang.org"
     source: hosted
+<<<<<<< HEAD
     version: "0.4.12"
 <<<<<<< HEAD
+=======
+
+    version: "0.4.12"
+
+>>>>>>> 7f3ac6c (error)
   theme_manager:
     dependency: "direct main"
     description:
@@ -402,8 +446,12 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.1.1"
+<<<<<<< HEAD
 =======
 >>>>>>> ab773c5 (chg)
+=======
+
+>>>>>>> 7f3ac6c (error)
   typed_data:
     dependency: transitive
     description:

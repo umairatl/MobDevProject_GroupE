@@ -1,8 +1,10 @@
 // ignore_for_file: constant_identifier_names
 
-import 'package:animate_do/animate_do.dart';
+
+
 import 'package:flutter/material.dart';
 import 'package:recipe_project/Presentation/Screens/Home/homepage.dart';
+
 
 enum BottomItems { Home, Saved, User }
 
