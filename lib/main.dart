@@ -36,8 +36,9 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Recipe Apps',
       debugShowCheckedModeBanner: false,
-      theme: ThemeData.dark(),
-      // home: const MyHomePage(title: 'teststt'),
+      theme: ThemeData(
+        primarySwatch: Colors.teal,
+      ),
       initialRoute: "/",
       onGenerateRoute: RouteGenerator().generateRoute,
       routes: {'/homepage': (context) => const Homepage()},

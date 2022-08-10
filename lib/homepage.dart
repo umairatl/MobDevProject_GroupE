@@ -28,6 +28,8 @@ class _HomepageState extends State<Homepage> {
     try {
       listRecipes = await RecipeAPI.fetchRecipe();
       listRecipes2 = await RecipeAPI.fetchRecipe();
+      print('listRecipes: $listRecipes');
+      print('listRecipes[0]: ${listRecipes[0]}');
       setState(() {
         isLoading = false;
       });

@@ -5,6 +5,7 @@ class RecipeModel {
   final String totalTime;
   final int totalServing;
   final String urlMenu;
+  final String description;
 
   RecipeModel(
       {required this.name,
@@ -12,16 +13,19 @@ class RecipeModel {
       required this.rating,
       required this.totalTime,
       required this.totalServing,
-      required this.urlMenu});
+      required this.urlMenu,
+      required this.description});
 
   factory RecipeModel.fromJson(dynamic json) {
     return RecipeModel(
-        name: json['name'] as String,
-        images: json['images'][0]['hostedLargeUrl'] as String,
-        rating: json['rating'] as double,
-        totalTime: json['totalTime'] as String,
-        totalServing: json['numberOfServings'] as int,
-        urlMenu: json['directionsUrl'] as String);
+        name: json['content']['details']['name'] as String,
+        images:
+            json['content']['details']['images'][0]['hostedLargeUrl'] as String,
+        rating: json['content']['details']['rating'] as double,
+        totalTime: json['content']['details']['totalTime'] as String,
+        totalServing: json['content']['details']['numberOfServings'] as int,
+        urlMenu: json['seo']['firebase']['appUrl'] as String,
+        description: json['seo']['web']['meta-tags']['description'] as String);
   }
 
   static List<RecipeModel> recipesFromSnapshot(List snapshot) {
