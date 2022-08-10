@@ -2,8 +2,9 @@
 
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
+import 'package:recipe_project/Presentation/Screens/Home/homepage.dart';
 
-enum BottomItems { Home, Explore, Saved, User }
+enum BottomItems { Home, Saved, User }
 
 class BottomNa extends StatefulWidget {
   const BottomNa({Key? key}) : super(key: key);
@@ -14,6 +15,28 @@ class BottomNa extends StatefulWidget {
 
 class _BottomNaState extends State<BottomNa> {
   BottomItems selectedItems = BottomItems.Home;
+
+  void navigateToHome() {
+    Navigator.pushNamed(
+      context,
+      '/homepage',
+    );
+  }
+
+  void navigateToSaved() {
+    Navigator.pushNamed(
+      context,
+      '/saved',
+    );
+  }
+
+  void navigateToUser() {
+    Navigator.pushNamed(
+      context,
+      '/user',
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -31,6 +54,7 @@ class _BottomNaState extends State<BottomNa> {
               setState(
                 () {
                   selectedItems = BottomItems.Home;
+                  Navigator.pushNamed(context, '/homepage');
                 },
               );
             },
@@ -44,26 +68,14 @@ class _BottomNaState extends State<BottomNa> {
           InkWell(
             onTap: () {
               setState(() {
-                selectedItems = BottomItems.Explore;
-              });
-            },
-            child: selectedItems == BottomItems.Explore
-                ? isActiveWidget("Explore")
-                : const Icon(
-                    Icons.explore_outlined,
-                    color: Colors.grey,
-                  ),
-          ),
-          InkWell(
-            onTap: () {
-              setState(() {
                 selectedItems = BottomItems.Saved;
+                Navigator.pushNamed(context, '/saved');
               });
             },
             child: selectedItems == BottomItems.Saved
                 ? isActiveWidget("Saved")
                 : const Icon(
-                    Icons.bookmark_outline,
+                    Icons.bookmark_border_outlined,
                     color: Colors.grey,
                   ),
           ),
@@ -71,6 +83,7 @@ class _BottomNaState extends State<BottomNa> {
             onTap: () {
               setState(() {
                 selectedItems = BottomItems.User;
+                Navigator.pushNamed(context, '/user');
               });
             },
             child: selectedItems == BottomItems.User
@@ -79,7 +92,7 @@ class _BottomNaState extends State<BottomNa> {
                     Icons.person_outline,
                     color: Colors.grey,
                   ),
-          )
+          ),
         ],
       ),
     );

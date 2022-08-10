@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:recipe_project/details.dart';
 import 'package:recipe_project/model/recipe_api.dart';
 import 'package:recipe_project/model/recipe_list.dart';
+import 'package:recipe_project/navigation/bottomNavBar.dart';
+
 import 'package:recipe_project/widgets/recipe.dart';
 
-import 'navigation/bottomNavBar.dart';
+import '../User/profile_screen.dart';
 
 class Homepage extends StatefulWidget {
   const Homepage({Key? key}) : super(key: key);
@@ -78,6 +81,7 @@ class _HomepageState extends State<Homepage> {
       appBar: AppBar(
         elevation: 0,
         backgroundColor: Colors.transparent,
+        title: const Text('Recipe'),
       ),
       body: isLoading
           ? Center(child: CircularProgressIndicator())
@@ -93,7 +97,6 @@ class _HomepageState extends State<Homepage> {
                           borderSide: const BorderSide(color: Colors.blue))),
                   onChanged: searchRecipe,
                 ),
-                
                 Expanded(
                   child: ListView.builder(
                     scrollDirection: Axis.horizontal,
