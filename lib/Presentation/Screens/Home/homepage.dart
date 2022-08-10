@@ -1,8 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:recipe_project/details.dart';
 import 'package:recipe_project/model/recipe_api.dart';
 import 'package:recipe_project/model/recipe_list.dart';
+import 'package:recipe_project/navigation/bottomNavBar.dart';
+
 import 'package:recipe_project/widgets/recipe.dart';
+
+import '../User/profile_screen.dart';
 
 class Homepage extends StatefulWidget {
   const Homepage({Key? key}) : super(key: key);
@@ -74,51 +79,48 @@ class _HomepageState extends State<Homepage> {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
-      backgroundColor: Colors.grey[900],
+      backgroundColor: Colors.black54,
       appBar: AppBar(
         elevation: 0,
         backgroundColor: Colors.transparent,
-        leading: Icon(Icons.menu),
-        actions: [
-          Padding(
-            padding: const EdgeInsets.only(right: 2.0),
-            child: Icon(Icons.person),
-          ),
-        ],
+        title: const Text('Recipe'),
       ),
       body: isLoading
           ? Center(child: CircularProgressIndicator())
-          : Column(children: [
-              TextField(
-                controller: controller,
-                decoration: InputDecoration(
-                    prefixIcon: const Icon(Icons.search),
-                    hintText: 'Search Recipe Title',
-                    border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(20),
-                        borderSide: const BorderSide(color: Colors.blue))),
-                onChanged: searchRecipe,
-              ),
-              Expanded(
-                child: ListView.builder(
-                  scrollDirection: Axis.horizontal,
-                  itemCount: listRecipes.length,
-                  itemBuilder: (context, index) {
-                    return GestureDetector(
-                      onTap: () {
-                        navigateToDetails(context, listRecipes[index]);
-                      },
-                      child: RecipeCard(
-                        title: listRecipes[index].name,
-                        cookTime: listRecipes[index].totalTime,
-                        rating: listRecipes[index].rating.toString(),
-                        thumbnailUrl: listRecipes[index].images,
-                      ),
-                    );
-                  },
+          : Column(
+              children: [
+                TextField(
+                  controller: controller,
+                  decoration: InputDecoration(
+                      prefixIcon: const Icon(Icons.search),
+                      hintText: 'Search Recipe Title',
+                      border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(20),
+                          borderSide: const BorderSide(color: Colors.blue))),
+                  onChanged: searchRecipe,
                 ),
-              ),
-            ]),
+                Expanded(
+                  child: ListView.builder(
+                    scrollDirection: Axis.horizontal,
+                    itemCount: listRecipes.length,
+                    itemBuilder: (context, index) {
+                      return GestureDetector(
+                        onTap: () {
+                          navigateToDetails(context, listRecipes[index]);
+                        },
+                        child: RecipeCard(
+                          title: listRecipes[index].name,
+                          cookTime: listRecipes[index].totalTime,
+                          rating: listRecipes[index].rating.toString(),
+                          thumbnailUrl: listRecipes[index].images,
+                        ),
+                      );
+                    },
+                  ),
+                ),
+              ],
+            ),
+      bottomNavigationBar: BottomNa(),
     );
   }
 }
