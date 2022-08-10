@@ -25,12 +25,33 @@ class _HomepageState extends State<Homepage> {
   }
 
   Future<void> getRecipes() async {
-    listRecipes = await RecipeAPI.fetchRecipe();
-    listRecipes2 = await RecipeAPI.fetchRecipe();
-    setState(() {
-      isLoading = false;
-    });
-    print(listRecipes);
+    try {
+      listRecipes = await RecipeAPI.fetchRecipe();
+      listRecipes2 = await RecipeAPI.fetchRecipe();
+      setState(() {
+        isLoading = false;
+      });
+      print(listRecipes);
+    } catch (e, st) {
+      listRecipes = [];
+      print(e);
+      print(st);
+      if (mounted) {
+        showDialog(
+          context: context,
+          builder: (context) {
+            return const AlertDialog(
+              title: Text("Error"),
+              content: Text("Cannot load the data"),
+            );
+          },
+        );
+      }
+    } finally {
+      setState(() {
+        isLoading = false;
+      });
+    }
   }
 
   void navigateToDetails(BuildContext context, RecipeModel data) {
@@ -49,46 +70,53 @@ class _HomepageState extends State<Homepage> {
 
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
     return Scaffold(
-        appBar: AppBar(
-          title: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Icon(Icons.restaurant_menu),
-              SizedBox(width: 10),
-              Text('Food Recipe')
-            ],
+      backgroundColor: Colors.grey[900],
+      appBar: AppBar(
+        elevation: 0,
+        backgroundColor: Colors.transparent,
+        leading: Icon(Icons.menu),
+        actions: [
+          Padding(
+            padding: const EdgeInsets.only(right: 2.0),
+            child: Icon(Icons.person),
           ),
-        ),
-        body: isLoading
-            ? Center(child: CircularProgressIndicator())
-            : Column(children: [
-                TextField(
-                  controller: controller,
-                  decoration: InputDecoration(
-                      prefixIcon: const Icon(Icons.search),
-                      hintText: 'Search Recipe Title',
-                      border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(20),
-                          borderSide: const BorderSide(color: Colors.blue))),
-                  onChanged: searchRecipe,
+        ],
+      ),
+      body: isLoading
+          ? Center(child: CircularProgressIndicator())
+          : Column(children: [
+              TextField(
+                controller: controller,
+                decoration: InputDecoration(
+                    prefixIcon: const Icon(Icons.search),
+                    hintText: 'Search Recipe Title',
+                    border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(20),
+                        borderSide: const BorderSide(color: Colors.blue))),
+                onChanged: searchRecipe,
+              ),
+              Expanded(
+                child: ListView.builder(
+                  scrollDirection: Axis.horizontal,
+                  itemCount: listRecipes.length,
+                  itemBuilder: (context, index) {
+                    return GestureDetector(
+                      onTap: () {
+                        navigateToDetails(context, listRecipes[index]);
+                      },
+                      child: RecipeCard(
+                        title: listRecipes[index].name,
+                        cookTime: listRecipes[index].totalTime,
+                        rating: listRecipes[index].rating.toString(),
+                        thumbnailUrl: listRecipes[index].images,
+                      ),
+                    );
+                  },
                 ),
-                Expanded(
-                  child: ListView.builder(
-                    itemCount: listRecipes.length,
-                    itemBuilder: (context, index) {
-                      return GestureDetector(
-                          onTap: () {
-                            navigateToDetails(context, listRecipes[index]);
-                          },
-                          child: RecipeCard(
-                              title: listRecipes[index].name,
-                              cookTime: listRecipes[index].totalTime,
-                              rating: listRecipes[index].rating.toString(),
-                              thumbnailUrl: listRecipes[index].images));
-                    },
-                  ),
-                ),
-              ]));
+              ),
+            ]),
+    );
   }
 }
