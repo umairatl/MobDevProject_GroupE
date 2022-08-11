@@ -115,11 +115,13 @@ class _HomepageState extends State<Homepage> {
       appBar: AppBar(
         elevation: 2,
         backgroundColor: theblue,
+
         title: Text("H O M E",
             style: GoogleFonts.lato(
                 color: Colors.white,
                 fontSize: 23,
                 fontWeight: FontWeight.bold)),
+
       ),
       body: isLoading
           ? Center(child: CircularProgressIndicator())
