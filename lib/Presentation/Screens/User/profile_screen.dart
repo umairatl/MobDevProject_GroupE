@@ -22,7 +22,7 @@ class _userState extends State<user> {
                   gradient: const LinearGradient(
                       begin: Alignment.topCenter,
                       end: Alignment.bottomCenter,
-                      colors: [Colors.teal, Colors.tealAccent])),
+                      colors: [Color(0xff202032), Color(0xFF733FF1)])),
               child: SizedBox(
                 width: double.infinity,
                 height: 420.0,
@@ -77,7 +77,7 @@ class _userState extends State<user> {
                                     Text(
                                       "Favourites",
                                       style: TextStyle(
-                                        color: Colors.tealAccent,
+                                        color: Color(0xff202032),
                                         fontSize: 22.0,
                                         fontWeight: FontWeight.bold,
                                       ),
@@ -89,7 +89,7 @@ class _userState extends State<user> {
                                       "42",
                                       style: TextStyle(
                                         fontSize: 20.0,
-                                        color: Colors.greenAccent,
+                                        color: Color(0xFF733FF1),
                                       ),
                                     )
                                   ],
@@ -102,7 +102,7 @@ class _userState extends State<user> {
                                     Text(
                                       "Reviews",
                                       style: TextStyle(
-                                        color: Colors.tealAccent,
+                                        color: Color(0xff202032),
                                         fontSize: 22.0,
                                         fontWeight: FontWeight.bold,
                                       ),
@@ -114,7 +114,7 @@ class _userState extends State<user> {
                                       "2",
                                       style: TextStyle(
                                         fontSize: 20.0,
-                                        color: Colors.greenAccent,
+                                        color: Color(0xFF733FF1),
                                       ),
                                     )
                                   ],
@@ -127,7 +127,7 @@ class _userState extends State<user> {
                                     Text(
                                       "Following",
                                       style: TextStyle(
-                                        color: Colors.tealAccent,
+                                        color: Color(0xff202032),
                                         fontSize: 22.0,
                                         fontWeight: FontWeight.bold,
                                       ),
@@ -138,9 +138,8 @@ class _userState extends State<user> {
                                     Text(
                                       "420",
                                       style: TextStyle(
-                                        fontSize: 20.0,
-                                        color: Colors.greenAccent,
-                                      ),
+                                          fontSize: 20.0,
+                                          color: Color(0xFF733FF1)),
                                     )
                                   ],
                                 ),
@@ -163,7 +162,7 @@ class _userState extends State<user> {
                 Text(
                   "About Me",
                   style: TextStyle(
-                      color: Colors.teal,
+                      color: Color(0xff202032),
                       fontStyle: FontStyle.normal,
                       fontSize: 28.0),
                 ),
@@ -185,9 +184,13 @@ class _userState extends State<user> {
           ),
           const SizedBox(
             height: 20.0,
+            // child: const DecoratedBox(
+            //   decoration: const BoxDecoration(color: Colors.red),
+            // ),
           ),
           SizedBox(
             width: 300.00,
+            // child: const DecoratedBox(decoration: const BoxDecoration(color: Colors.red),),
             child: ElevatedButton.icon(
               label: const Text('Edit Profile'),
               icon: const Icon(Icons.edit),

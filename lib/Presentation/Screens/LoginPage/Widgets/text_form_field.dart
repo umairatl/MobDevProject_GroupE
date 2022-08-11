@@ -29,12 +29,12 @@ class InputField extends StatelessWidget {
         },
         decoration: InputDecoration(
             enabledBorder: OutlineInputBorder(
-                borderSide: const BorderSide(color: Colors.green),
+                borderSide: const BorderSide(color: Color(0xff202032)),
                 borderRadius: kBorderRadius),
             focusedBorder: OutlineInputBorder(
-                borderSide: const BorderSide(color: Colors.green),
+                borderSide: const BorderSide(color: Color(0xff202032)),
                 borderRadius: kBorderRadius),
-            hintStyle: const TextStyle(color: Colors.green),
+            hintStyle: const TextStyle(color: Color(0xff202032)),
             filled: true,
             fillColor: Colors.white,
             hintText: label,
