@@ -12,13 +12,16 @@ class ReviewCard extends StatelessWidget {
   });
   @override
   Widget build(BuildContext context) {
+    var wd = MediaQuery.of(context).size.width;
+    var hg = MediaQuery.of(context).size.height;
+    const thepurple = Color(0xFF733FF1);
+    const theblue = Color(0xff202032);
+
     return Container(
-      margin: EdgeInsets.symmetric(horizontal: 22, vertical: 10),
-      width: MediaQuery.of(context).size.width,
-      height: 180,
+      margin: EdgeInsets.symmetric(horizontal: 10, vertical: 50),
       decoration: BoxDecoration(
-        color: Colors.black,
-        borderRadius: BorderRadius.circular(15),
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(20),
         boxShadow: [
           BoxShadow(
             color: Colors.black.withOpacity(0.6),
@@ -31,71 +34,35 @@ class ReviewCard extends StatelessWidget {
           ),
         ],
       ),
-      child: Stack(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Align(
-            child: Padding(
-              padding: EdgeInsets.symmetric(horizontal: 5.0),
-              child: Text(
-                rating.toString(),
-                style: TextStyle(
-                  fontSize: 19,
-                ),
-                overflow: TextOverflow.ellipsis,
-                maxLines: 2,
-                textAlign: TextAlign.center,
-              ),
+          Text(name,
+              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+          Container(
+            padding: EdgeInsets.all(5),
+            margin: EdgeInsets.all(2),
+            decoration: BoxDecoration(
+              color: Colors.black.withOpacity(0.4),
+              borderRadius: BorderRadius.circular(15),
             ),
-            alignment: Alignment.center,
-          ),
-          Align(
             child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Container(
-                  padding: EdgeInsets.all(5),
-                  margin: EdgeInsets.all(10),
-                  decoration: BoxDecoration(
-                    color: Colors.black.withOpacity(0.4),
-                    borderRadius: BorderRadius.circular(15),
-                  ),
-                  child: Row(
-                    children: [
-                      Icon(
-                        Icons.star,
-                        color: Colors.yellow,
-                        size: 18,
-                      ),
-                      SizedBox(width: 7),
-                      Text(rating.toString()),
-                    ],
-                  ),
-                ),
-                Container(
-                  padding: EdgeInsets.all(5),
-                  margin: EdgeInsets.all(10),
-                  decoration: BoxDecoration(
-                    color: Colors.black.withOpacity(0.4),
-                    borderRadius: BorderRadius.circular(15),
-                  ),
-                  child: Row(
-                    children: [
-                      Icon(
-                        Icons.schedule,
-                        color: Colors.yellow,
-                        size: 18,
-                      ),
-                      SizedBox(width: 7),
-                      Text(rating.toString()),
-                    ],
-                  ),
-                )
-              ],
-            ),
-            alignment: Alignment.bottomLeft,
+                children: List.generate(
+              rating,
+              (index) => IconButton(
+                icon: Icon(Icons.star, size: 18),
+                color: Colors.yellow,
+                onPressed: () {},
+              ),
+            )),
           ),
+          SizedBox(
+            width: 300,
+            child: Text('" $comment "', textAlign: TextAlign.center),
+          )
         ],
       ),
+      alignment: Alignment.bottomLeft,
     );
   }
 }

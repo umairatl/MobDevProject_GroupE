@@ -131,17 +131,21 @@ class _HomepageState extends State<Homepage> {
           ? Center(child: CircularProgressIndicator())
           : Column(
               children: [
-                Spacer(flex: 1),
-                TextField(
-                  controller: controller,
-                  decoration: InputDecoration(
-                      prefixIcon: const Icon(Icons.search),
-                      hintText: 'Search Recipe Title',
-                      border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(20),
-                          borderSide: const BorderSide(color: thepurple))),
-                  onChanged: searchRecipe,
+                SizedBox(height: 10),
+                SizedBox(
+                  width: 350,
+                  child: TextField(
+                    controller: controller,
+                    decoration: InputDecoration(
+                        prefixIcon: const Icon(Icons.search),
+                        hintText: 'Search Recipe Tittle',
+                        border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(20),
+                            borderSide: const BorderSide(color: thepurple))),
+                    onChanged: searchRecipe,
+                  ),
                 ),
+                Text('Menu List'),
                 Expanded(
                   child: ListView.builder(
                     scrollDirection: Axis.horizontal,
@@ -161,6 +165,7 @@ class _HomepageState extends State<Homepage> {
                     },
                   ),
                 ),
+                Text('See what other users are saying about us'),
                 Expanded(
                   child: ListView.builder(
                     scrollDirection: Axis.horizontal,

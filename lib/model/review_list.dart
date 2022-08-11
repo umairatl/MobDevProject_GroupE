@@ -11,7 +11,7 @@ class ReviewModel {
 
   factory ReviewModel.fromJson(dynamic json) {
     return ReviewModel(
-      name: json['user']['profileName'] as String,
+      name: json['user']['displayName'] as String,
       rating: json['rating'] as int,
       comment: json['text'] as String,
     );

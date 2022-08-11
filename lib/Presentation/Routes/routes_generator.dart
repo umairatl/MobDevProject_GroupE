@@ -7,7 +7,6 @@ import '../../business_logic/bloc/LoginAuth/auth_bloc.dart';
 import '../Screens/LoginPage/UI/login_page.dart';
 
 class RouteGenerator {
-  final AuthBloc _authBloc = AuthBloc();
   // final DashboardBloc _dashboardBloc = DashboardBloc();
 
   Route<dynamic> generateRoute(RouteSettings settings) {
@@ -16,12 +15,8 @@ class RouteGenerator {
     switch (settings.name) {
       case '/':
         return MaterialPageRoute(
-          builder: (_) => BlocProvider<AuthBloc>.value(
-            value: _authBloc,
-            child: const MyHomePage(title: "Login page with overlay"),
-          ),
+          builder: (_) => const MyHomePage(title: "Login page with overlay"),
         );
-
         // case '/dashboard':
         //   if (args is String) {
         //     return MaterialPageRoute(

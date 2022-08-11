@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_onboarding_screen/OnbordingData.dart';
 import 'package:flutter_onboarding_screen/flutteronboardingscreens.dart';
-import 'package:recipe_project/Presentation/Screens/Home/homepage.dart';
+import 'package:recipe_project/Presentation/Screens/LoginPage/UI/login_page.dart';
 
 class Onboarding extends StatelessWidget {
   final List<OnbordingData> list = [
@@ -26,7 +26,7 @@ class Onboarding extends StatelessWidget {
   Widget build(BuildContext context) {
     return new IntroScreen(
       list,
-      MaterialPageRoute(builder: (context) => Homepage()),
+      MaterialPageRoute(builder: (context) => MyHomePage(title: 'Recipe')),
     );
   }
 }
