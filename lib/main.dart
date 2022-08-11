@@ -41,26 +41,14 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Recipe Apps',
       debugShowCheckedModeBanner: false,
-<<<<<<< HEAD
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
       initialRoute: "/",
       onGenerateRoute: RouteGenerator().generateRoute,
       routes: {
-        '/homepage': (context) =>  Homepage(),
-        '/explore': (context) => explore(),
-=======
-      theme: ThemeData.light(),
-      darkTheme: ThemeData.dark(),
-      // home: const MyHomePage(title: 'teststt'),
-
-      initialRoute: "/",
-      onGenerateRoute: RouteGenerator().generateRoute,
-      routes: {
-        '/homepage': (context) => const Homepage(),
-        '/saved': (context) => saved(),
->>>>>>> 52e54d9 (up)
+        '/homepage': (context) => Homepage(),
+        '/explore': (context) => Explore(),
         '/user': (context) => user(),
       },
     );

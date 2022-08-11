@@ -5,12 +5,12 @@ import 'package:recipe_project/Presentation/Components/loader.dart';
 
 import '../../../navigation/bottomNavBar.dart';
 
-class explore extends StatefulWidget {
+class Explore extends StatefulWidget {
   @override
-  _exploreState createState() => _exploreState();
+  _ExploreState createState() => _ExploreState();
 }
 
-class _exploreState extends State<explore> {
+class _ExploreState extends State<Explore> {
   @override
   Widget build(BuildContext context) {
     const thepurple = Color(0xFF733FF1);
