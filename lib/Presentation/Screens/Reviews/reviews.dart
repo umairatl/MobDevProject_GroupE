@@ -12,22 +12,20 @@ class ReviewCard extends StatelessWidget {
   });
   @override
   Widget build(BuildContext context) {
-    var wd = MediaQuery.of(context).size.width;
-    var hg = MediaQuery.of(context).size.height;
-    const thepurple = Color(0xFF733FF1);
     const theblue = Color(0xff202032);
 
     return Container(
-      margin: EdgeInsets.symmetric(horizontal: 10, vertical: 50),
+      margin: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+      padding: EdgeInsets.all(10),
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: Colors.grey.shade100,
         borderRadius: BorderRadius.circular(20),
         boxShadow: [
           BoxShadow(
             color: Colors.black.withOpacity(0.6),
             offset: Offset(
               0.0,
-              10.0,
+              20.0,
             ),
             blurRadius: 10.0,
             spreadRadius: -6.0,
