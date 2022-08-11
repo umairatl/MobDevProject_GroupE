@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:recipe_project/Presentation/Screens/Home/homepage.dart';
 import 'package:animate_do/animate_do.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 enum BottomItems { Home, Explore, User }
 
@@ -15,6 +16,8 @@ class BottomNa extends StatefulWidget {
 
 class _BottomNaState extends State<BottomNa> {
   BottomItems selectedItems = BottomItems.Home;
+
+  final Uri _url = Uri.parse('https://www.yummly.com/');
 
   void navigateToHome() {
     Navigator.pushNamed(
@@ -69,7 +72,8 @@ class _BottomNaState extends State<BottomNa> {
             onTap: () {
               setState(() {
                 selectedItems = BottomItems.Explore;
-                Navigator.pushNamed(context, '/explore');
+                launchUrl(_url);
+                Navigator.pushNamed(context, '/homepage');
               });
             },
             child: selectedItems == BottomItems.Explore

@@ -84,8 +84,7 @@ class _MyHomePageState extends State<MyHomePage> {
               textController: userName,
               label: "UserID",
               icons: const Icon(Icons.person, color: Color(0xFF733FF1)),
-            ), // Size size = MediaQuery.of(context).size;
-
+            ),
             HeightSpacer(myHeight: kSpacing),
             InputField(
               focusNode: passwordFocus,

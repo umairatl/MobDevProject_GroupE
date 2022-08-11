@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:recipe_project/details.dart';
-
 import '../model/recipe_list.dart';
 
 class RecipeCard extends StatelessWidget {
@@ -24,60 +23,66 @@ class RecipeCard extends StatelessWidget {
 
   bool isLoading = true;
   late List<RecipeModel> listRecipes;
-  late List<RecipeModel> _serchResult = [];
   TextEditingController controller = new TextEditingController();
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      scrollDirection: Axis.horizontal,
-      // padding: const EdgeInsets.only(left: 5.0, bottom: 25.0),
-      child: Row(
-        children: <Widget>[
-          Container(
-            margin: EdgeInsets.only(
-              left: 10,
-              top: 10,
-              bottom: 15,
+    return Container(
+        margin: EdgeInsets.symmetric(horizontal: 15, vertical: 25),
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(20),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black.withOpacity(0.6),
+              offset: Offset(
+                0.0,
+                10.0,
+              ),
+              blurRadius: 10.0,
+              spreadRadius: -6.0,
             ),
-            width: 290,
-            child: GestureDetector(
-                onTap: onTap,
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  children: <Widget>[
-                    Image.network(thumbnailUrl),
-                    Container(
-                      padding: EdgeInsets.all(10),
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.only(
-                          bottomLeft: Radius.circular(10),
-                          bottomRight: Radius.circular(10),
-                        ),
-                      ),
-                      child: Row(
-                        children: <Widget>[
-                          Align(
-                            alignment: AlignmentDirectional.bottomStart,
-                            child: RichText(
-                              text: TextSpan(
-                                children: [
-                                  TextSpan(
-                                      text: "$title\n",
-                                      style: TextStyle(color: Colors.black)),
-                                ],
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ],
-                )),
-          )
-        ],
-      ),
-    );
+          ],
+        ),
+        child: GestureDetector(
+          onTap: onTap,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            // children:  [
+            //          Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              SizedBox(
+                width: 220,
+                child: Image.network(thumbnailUrl),
+              ),
+              Text(title,
+                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+              Container(
+                padding: EdgeInsets.all(5),
+                margin: EdgeInsets.all(2),
+                decoration: BoxDecoration(
+                  color: Colors.black.withOpacity(0.4),
+                  borderRadius: BorderRadius.circular(15),
+                ),
+                // child: Row(
+                //     children: List.generate(
+                //   rating,
+                //   (index) => IconButton(
+                //     icon: Icon(Icons.star, size: 18),
+                //     color: Colors.yellow,
+                //     onPressed: () {},
+                //   ),
+                // )),
+              ),
+              // SizedBox(
+              //   width: 300,
+              //   child: Text('" $\\ "', textAlign: TextAlign.center),
+              // )
+            ],
+          ),
+          // alignment: Alignment.bottomLeft,
+        ));
+    // ));
   }
 }

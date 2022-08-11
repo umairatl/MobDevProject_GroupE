@@ -13,12 +13,8 @@ class RouteGenerator {
     switch (settings.name) {
       case '/':
         return MaterialPageRoute(
-          builder: (_) => BlocProvider<AuthBloc>.value(
-            value: _authBloc,
-            child: const MyHomePage(title: "Login page with overlay"),
-          ),
+          builder: (_) => const MyHomePage(title: "Login page with overlay"),
         );
-
       default:
         return _errorRoute();
     }
