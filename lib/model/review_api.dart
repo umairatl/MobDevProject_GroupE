@@ -1,21 +1,25 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
-import 'package:recipe_project/model/recipe_list.dart';
+import 'package:recipe_project/model/review_list.dart';
 
-class RecipeAPI {
-  static Future<List<RecipeModel>> fetchRecipe() async {
-    var uri = Uri.https('yummly2.p.rapidapi.com', '/reviews/list',
-        {"limit": "18", "start": "0", "tag": "list.recipe.popular"});
+class ReviewAPI {
+  static Future<List<ReviewModel>> fetchRecipe() async {
+    var uri = Uri.https('yummly2.p.rapidapi.com', '/reviews/list', {
+      "offset": "0",
+      "globalId:": "a8d6747a-bfaa-46a7-92fb-892e3f76b264",
+      "limit": "20",
+    });
 
     final response = await http.get(uri, headers: {
-      "x-rapidapi-key": "3a7186e0e6msh58c26f19e5e5086p1e45a3jsn6f803287f502",
+      "x-rapidapi-key": "a06cce8776msha21281ada514d1dp1bc50fjsn0f61459805e1",
       "x-rapidapi-host": "yummly2.p.rapidapi.com",
       "useQueryString": "true"
     });
 
     if (response.statusCode != 200) {
-      throw Exception("Error happen");
+      throw Exception("Error happened");
     }
+
     Map data = jsonDecode(response.body);
     List _temp = [];
 
@@ -23,6 +27,6 @@ class RecipeAPI {
       _temp.add(i);
     }
 
-    return RecipeModel.recipesFromSnapshot(_temp);
+    return ReviewModel.reviewFromSnapshot(_temp);
   }
 }
