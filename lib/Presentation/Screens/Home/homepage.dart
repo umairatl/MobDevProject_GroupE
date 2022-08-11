@@ -1,14 +1,14 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:recipe_project/Presentation/Screens/Reviews/reviews.dart';
 import 'package:recipe_project/details.dart';
 import 'package:recipe_project/model/recipe_api.dart';
 import 'package:recipe_project/model/recipe_list.dart';
 import 'package:recipe_project/navigation/bottomNavBar.dart';
-
 import 'package:recipe_project/widgets/recipe.dart';
-
-import '../User/profile_screen.dart';
+import '../../../model/review_api.dart';
+import '../../../model/review_list.dart';
+import 'package:recipe_project/model/review_list.dart';
 
 class Homepage extends StatefulWidget {
   const Homepage({Key? key}) : super(key: key);
@@ -22,28 +22,25 @@ class _HomepageState extends State<Homepage> {
   late List<RecipeModel> listRecipes;
   late List<RecipeModel> listRecipes2;
   TextEditingController controller = new TextEditingController();
+  late List<ReviewModel> listReview;
 
   @override
   void initState() {
     super.initState();
 
     getRecipes();
+    getReviews();
   }
 
   Future<void> getRecipes() async {
     try {
       listRecipes = await RecipeAPI.fetchRecipe();
       listRecipes2 = await RecipeAPI.fetchRecipe();
-      print('listRecipes: $listRecipes');
-      print('listRecipes[0]: ${listRecipes[0]}');
       setState(() {
         isLoading = false;
       });
-      print(listRecipes);
     } catch (e, st) {
       listRecipes = [];
-      print(e);
-      print(st);
       if (mounted) {
         showDialog(
           context: context,
@@ -60,6 +57,10 @@ class _HomepageState extends State<Homepage> {
         isLoading = false;
       });
     }
+  }
+
+  Future<void> getReviews() async {
+    listReview = await ReviewAPI.fetchRecipe();
   }
 
   void navigateToDetails(BuildContext context, RecipeModel data) {
@@ -130,17 +131,21 @@ class _HomepageState extends State<Homepage> {
           ? Center(child: CircularProgressIndicator())
           : Column(
               children: [
-                Spacer(flex: 1),
-                TextField(
-                  controller: controller,
-                  decoration: InputDecoration(
-                      prefixIcon: const Icon(Icons.search),
-                      hintText: 'Search Recipe Title',
-                      border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(20),
-                          borderSide: const BorderSide(color: thepurple))),
-                  onChanged: searchRecipe,
+                // SizedBox(height: 10),
+                SizedBox(
+                  width: 350,
+                  child: TextField(
+                    controller: controller,
+                    decoration: InputDecoration(
+                        prefixIcon: const Icon(Icons.search),
+                        hintText: 'Search Recipe Tittle',
+                        border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(20),
+                            borderSide: const BorderSide(color: thepurple))),
+                    onChanged: searchRecipe,
+                  ),
                 ),
+                Text('Menu List'),
                 Expanded(
                   child: ListView.builder(
                     scrollDirection: Axis.horizontal,
@@ -155,6 +160,22 @@ class _HomepageState extends State<Homepage> {
                           cookTime: listRecipes[index].totalTime,
                           rating: listRecipes[index].rating.toString(),
                           thumbnailUrl: listRecipes[index].images,
+                        ),
+                      );
+                    },
+                  ),
+                ),
+                Text('See what other users are saying about us'),
+                Expanded(
+                  child: ListView.builder(
+                    scrollDirection: Axis.horizontal,
+                    itemCount: listReview.length,
+                    itemBuilder: (context, index) {
+                      return SizedBox(
+                        child: ReviewCard(
+                          name: listReview[index].name,
+                          rating: listReview[index].rating,
+                          comment: listReview[index].comment,
                         ),
                       );
                     },
