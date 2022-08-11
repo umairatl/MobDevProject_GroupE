@@ -1,5 +1,16 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:animate_do/animate_do.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:recipe_project/details.dart';
+import 'package:recipe_project/model/recipe_api.dart';
+import 'package:recipe_project/model/recipe_list.dart';
+import 'package:recipe_project/navigation/bottomNavBar.dart';
+
+import 'package:recipe_project/widgets/recipe.dart';
+
+import '../User/profile_screen.dart';
 
 class user extends StatefulWidget {
   @override
@@ -20,7 +31,7 @@ class _userState extends State<user> {
                       colors: [Colors.lightGreen, Colors.lightGreenAccent])),
               child: Container(
                 width: double.infinity,
-                height: 450.0,
+                height: 420.0,
                 child: Center(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.center,
@@ -50,7 +61,7 @@ class _userState extends State<user> {
                         style: TextStyle(fontSize: 16, color: Colors.black),
                       ),
                       SizedBox(
-                        height: 30.0,
+                        height: 20.0,
                       ),
                       Card(
                         margin: EdgeInsets.symmetric(
@@ -213,6 +224,7 @@ class _userState extends State<user> {
           ),
         ],
       ),
+      bottomNavigationBar: FadeInUp(child: BottomNa()),
     );
   }
 }
