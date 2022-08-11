@@ -79,12 +79,12 @@ class _HomepageState extends State<Homepage> {
 
   @override
   Widget build(BuildContext context) {
-    Size size = MediaQuery.of(context).size;
     const thepurple = Color(0xFF733FF1);
     const theblue = Color(0xff202032);
     const thewhite = Colors.white;
 
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       backgroundColor: thewhite,
       appBar: AppBar(
         elevation: 0,
@@ -131,7 +131,7 @@ class _HomepageState extends State<Homepage> {
           ? Center(child: CircularProgressIndicator())
           : Column(
               children: [
-                // SizedBox(height: 10),
+                SizedBox(height: 10),
                 SizedBox(
                   width: 350,
                   child: TextField(
@@ -145,9 +145,15 @@ class _HomepageState extends State<Homepage> {
                     onChanged: searchRecipe,
                   ),
                 ),
-                Text('Menu List'),
+                SizedBox(height: 10),
+                Text(
+                  'Menu List',
+                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                  textAlign: TextAlign.left,
+                ),
                 Expanded(
                   child: ListView.builder(
+                    shrinkWrap: true,
                     scrollDirection: Axis.horizontal,
                     itemCount: listRecipes.length,
                     itemBuilder: (context, index) {
@@ -165,9 +171,15 @@ class _HomepageState extends State<Homepage> {
                     },
                   ),
                 ),
-                Text('See what other users are saying about us'),
+                SizedBox(height: 20),
+                Text(
+                  'User Reviews',
+                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                  textAlign: TextAlign.left,
+                ),
                 Expanded(
                   child: ListView.builder(
+                    shrinkWrap: true,
                     scrollDirection: Axis.horizontal,
                     itemCount: listReview.length,
                     itemBuilder: (context, index) {
