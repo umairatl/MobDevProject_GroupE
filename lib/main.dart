@@ -42,12 +42,12 @@ class MyApp extends StatelessWidget {
       title: 'Recipe Apps',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.teal,
       ),
       initialRoute: "/",
       onGenerateRoute: RouteGenerator().generateRoute,
       routes: {
-        '/homepage': (context) =>  Homepage(),
+        '/homepage': (context) => Homepage(),
         '/explore': (context) => explore(),
         '/user': (context) => user(),
       },
