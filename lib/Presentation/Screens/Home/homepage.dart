@@ -1,3 +1,4 @@
+import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:recipe_project/details.dart';
@@ -78,17 +79,58 @@ class _HomepageState extends State<Homepage> {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
+    const thepurple = Color(0xFF733FF1);
+    const theblue = Color(0xff202032);
+    const thewhite = Colors.white;
+
     return Scaffold(
-      backgroundColor: Colors.black54,
+      backgroundColor: thewhite,
       appBar: AppBar(
         elevation: 0,
-        backgroundColor: Colors.transparent,
-        title: const Text('Recipe'),
+        backgroundColor: theblue,
+        actions: [
+          FadeIn(
+            delay: const Duration(seconds: 1),
+            child: Row(
+              children: <Widget>[
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: const [
+                    Text(
+                      "Welcome back",
+                      style: TextStyle(color: Colors.grey),
+                    ),
+                    Text(
+                      "Begum",
+                      style: TextStyle(
+                        color: thewhite,
+                        fontSize: 25,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ],
+                ),
+                Container(
+                  height: 50,
+                  width: 50,
+                  margin: const EdgeInsets.only(left: 200, right: 10),
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(30), color: theblue),
+                  child: const Icon(
+                    Icons.logout,
+                    color: thewhite,
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ],
       ),
       body: isLoading
           ? Center(child: CircularProgressIndicator())
           : Column(
               children: [
+                Spacer(flex: 1),
                 TextField(
                   controller: controller,
                   decoration: InputDecoration(
@@ -96,7 +138,7 @@ class _HomepageState extends State<Homepage> {
                       hintText: 'Search Recipe Title',
                       border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(20),
-                          borderSide: const BorderSide(color: Colors.blue))),
+                          borderSide: const BorderSide(color: thepurple))),
                   onChanged: searchRecipe,
                 ),
                 Expanded(
@@ -104,11 +146,11 @@ class _HomepageState extends State<Homepage> {
                     scrollDirection: Axis.horizontal,
                     itemCount: listRecipes.length,
                     itemBuilder: (context, index) {
-                      return GestureDetector(
-                        onTap: () {
-                          navigateToDetails(context, listRecipes[index]);
-                        },
+                      return SizedBox(
                         child: RecipeCard(
+                          onTap: () {
+                            navigateToDetails(context, listRecipes[index]);
+                          },
                           title: listRecipes[index].name,
                           cookTime: listRecipes[index].totalTime,
                           rating: listRecipes[index].rating.toString(),
@@ -120,7 +162,7 @@ class _HomepageState extends State<Homepage> {
                 ),
               ],
             ),
-      bottomNavigationBar: BottomNa(),
+      bottomNavigationBar: FadeInUp(child: BottomNa()),
     );
   }
 }
