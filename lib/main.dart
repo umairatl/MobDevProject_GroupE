@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:recipe_project/Presentation/Screens/Home/homepage.dart';
 import 'package:recipe_project/Presentation/Screens/Onboarding/onboarding.dart';
-import 'package:recipe_project/Presentation/Screens/Saved/saved.dart';
 import 'package:recipe_project/Presentation/Screens/User/profile_screen.dart';
+import 'package:recipe_project/Presentation/Screens/Explore/explore.dart';
 import 'Presentation/Routes/routes_generator.dart';
 
 void main() {
@@ -23,8 +23,8 @@ class MyApp extends StatelessWidget {
       home: Onboarding(),
       onGenerateRoute: RouteGenerator().generateRoute,
       routes: {
-        '/homepage': (context) => const Homepage(),
-        '/saved': (context) => saved(),
+        '/homepage': (context) => Homepage(),
+        '/explore': (context) => explore(),
         '/user': (context) => user(),
       },
     );

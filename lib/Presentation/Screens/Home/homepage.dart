@@ -1,10 +1,14 @@
+import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
+import 'package:recipe_project/Presentation/Screens/Reviews/reviews.dart';
 import 'package:recipe_project/details.dart';
 import 'package:recipe_project/model/recipe_api.dart';
 import 'package:recipe_project/model/recipe_list.dart';
 import 'package:recipe_project/navigation/bottomNavBar.dart';
-
 import 'package:recipe_project/widgets/recipe.dart';
+import '../../../model/review_api.dart';
+import '../../../model/review_list.dart';
+import 'package:recipe_project/model/review_list.dart';
 
 class Homepage extends StatefulWidget {
   const Homepage({Key? key}) : super(key: key);
@@ -18,28 +22,25 @@ class _HomepageState extends State<Homepage> {
   late List<RecipeModel> listRecipes;
   late List<RecipeModel> listRecipes2;
   TextEditingController controller = new TextEditingController();
+  late List<ReviewModel> listReview;
 
   @override
   void initState() {
     super.initState();
 
     getRecipes();
+    getReviews();
   }
 
   Future<void> getRecipes() async {
     try {
       listRecipes = await RecipeAPI.fetchRecipe();
       listRecipes2 = await RecipeAPI.fetchRecipe();
-      print('listRecipes: $listRecipes');
-      print('listRecipes[0]: ${listRecipes[0]}');
       setState(() {
         isLoading = false;
       });
-      print(listRecipes);
     } catch (e, st) {
       listRecipes = [];
-      print(e);
-      print(st);
       if (mounted) {
         showDialog(
           context: context,
@@ -56,6 +57,10 @@ class _HomepageState extends State<Homepage> {
         isLoading = false;
       });
     }
+  }
+
+  Future<void> getReviews() async {
+    listReview = await ReviewAPI.fetchRecipe();
   }
 
   void navigateToDetails(BuildContext context, RecipeModel data) {
@@ -75,17 +80,58 @@ class _HomepageState extends State<Homepage> {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
+    const thepurple = Color(0xFF733FF1);
+    const theblue = Color(0xff202032);
+    const thewhite = Colors.white;
+
     return Scaffold(
-      backgroundColor: Colors.black54,
+      backgroundColor: thewhite,
       appBar: AppBar(
         elevation: 0,
-        backgroundColor: Colors.transparent,
-        title: const Text('Recipe'),
+        backgroundColor: theblue,
+        actions: [
+          FadeIn(
+            delay: const Duration(seconds: 1),
+            child: Row(
+              children: <Widget>[
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: const [
+                    Text(
+                      "Welcome back",
+                      style: TextStyle(color: Colors.grey),
+                    ),
+                    Text(
+                      "Begum",
+                      style: TextStyle(
+                        color: thewhite,
+                        fontSize: 25,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ],
+                ),
+                Container(
+                  height: 50,
+                  width: 50,
+                  margin: const EdgeInsets.only(left: 200, right: 10),
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(30), color: theblue),
+                  child: const Icon(
+                    Icons.logout,
+                    color: thewhite,
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ],
       ),
       body: isLoading
           ? Center(child: CircularProgressIndicator())
           : Column(
               children: [
+                Spacer(flex: 1),
                 TextField(
                   controller: controller,
                   decoration: InputDecoration(
@@ -93,7 +139,7 @@ class _HomepageState extends State<Homepage> {
                       hintText: 'Search Recipe Title',
                       border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(20),
-                          borderSide: const BorderSide(color: Colors.blue))),
+                          borderSide: const BorderSide(color: thepurple))),
                   onChanged: searchRecipe,
                 ),
                 Expanded(
@@ -101,11 +147,11 @@ class _HomepageState extends State<Homepage> {
                     scrollDirection: Axis.horizontal,
                     itemCount: listRecipes.length,
                     itemBuilder: (context, index) {
-                      return GestureDetector(
-                        onTap: () {
-                          navigateToDetails(context, listRecipes[index]);
-                        },
+                      return SizedBox(
                         child: RecipeCard(
+                          onTap: () {
+                            navigateToDetails(context, listRecipes[index]);
+                          },
                           title: listRecipes[index].name,
                           cookTime: listRecipes[index].totalTime,
                           rating: listRecipes[index].rating.toString(),
@@ -115,9 +161,24 @@ class _HomepageState extends State<Homepage> {
                     },
                   ),
                 ),
+                Expanded(
+                  child: ListView.builder(
+                    scrollDirection: Axis.horizontal,
+                    itemCount: listReview.length,
+                    itemBuilder: (context, index) {
+                      return SizedBox(
+                        child: ReviewCard(
+                          name: listReview[index].name,
+                          rating: listReview[index].rating,
+                          comment: listReview[index].comment,
+                        ),
+                      );
+                    },
+                  ),
+                ),
               ],
             ),
-      bottomNavigationBar: BottomNa(),
+      bottomNavigationBar: FadeInUp(child: BottomNa()),
     );
   }
 }

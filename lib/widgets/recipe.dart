@@ -8,13 +8,14 @@ class RecipeCard extends StatelessWidget {
   final String rating;
   final String cookTime;
   final String thumbnailUrl;
+  final Function() onTap;
 
-  RecipeCard({
-    required this.title,
-    required this.cookTime,
-    required this.rating,
-    required this.thumbnailUrl,
-  });
+  RecipeCard(
+      {required this.title,
+      required this.cookTime,
+      required this.rating,
+      required this.thumbnailUrl,
+      required this.onTap});
 
   void navigateToDetails(BuildContext context, RecipeModel data) {
     Navigator.push(context,
@@ -40,40 +41,40 @@ class RecipeCard extends StatelessWidget {
               bottom: 15,
             ),
             width: 290,
-            child: Column(
-              children: <Widget>[
-                Image.network(thumbnailUrl),
-                GestureDetector(
-                  onTap: () {},
-                  child: Container(
-                    padding: EdgeInsets.all(10),
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.only(
-                        bottomLeft: Radius.circular(10),
-                        bottomRight: Radius.circular(10),
+            child: GestureDetector(
+                onTap: onTap,
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: <Widget>[
+                    Image.network(thumbnailUrl),
+                    Container(
+                      padding: EdgeInsets.all(10),
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.only(
+                          bottomLeft: Radius.circular(10),
+                          bottomRight: Radius.circular(10),
+                        ),
                       ),
-                    ),
-                    child: Row(
-                      children: <Widget>[
-                        Align(
-                          alignment: AlignmentDirectional.bottomStart,
-                          child: RichText(
-                            text: TextSpan(
-                              children: [
-                                TextSpan(
-                                    text: "$title\n",
-                                    style: TextStyle(color: Colors.black)),
-                              ],
+                      child: Row(
+                        children: <Widget>[
+                          Align(
+                            alignment: AlignmentDirectional.bottomStart,
+                            child: RichText(
+                              text: TextSpan(
+                                children: [
+                                  TextSpan(
+                                      text: "$title\n",
+                                      style: TextStyle(color: Colors.black)),
+                                ],
+                              ),
                             ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
-                  ),
-                )
-              ],
-            ),
+                  ],
+                )),
           )
         ],
       ),
