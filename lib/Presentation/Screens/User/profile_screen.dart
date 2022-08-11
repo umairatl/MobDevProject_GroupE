@@ -1,19 +1,19 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class user extends StatefulWidget {
+class User extends StatefulWidget {
   @override
-  _userState createState() => _userState();
+  _UserState createState() => _UserState();
 }
 
-class _userState extends State<user> {
+class _UserState extends State<User> {
   @override
   Widget build(BuildContext context) {
     return Container(
       color: Colors.orangeAccent,
       child: Center(
         child: Text(
-          'This is the user screen.',
+          'This is the User screen.',
           style: TextStyle(color: Colors.white, fontSize: 18),
         ),
       ),

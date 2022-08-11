@@ -44,12 +44,12 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      initialRoute: "/",
+      initialRoute: "/homepage",
       onGenerateRoute: RouteGenerator().generateRoute,
       routes: {
         '/homepage': (context) => Homepage(),
         '/explore': (context) => Explore(),
-        '/user': (context) => user(),
+        '/user': (context) => User(),
       },
     );
   }

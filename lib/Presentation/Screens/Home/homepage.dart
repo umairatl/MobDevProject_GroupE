@@ -78,7 +78,6 @@ class _HomepageState extends State<Homepage> {
 
   @override
   Widget build(BuildContext context) {
-    Size size = MediaQuery.of(context).size;
     const thepurple = Color(0xFF733FF1);
     const theblue = Color(0xff202032);
     const thewhite = Colors.white;

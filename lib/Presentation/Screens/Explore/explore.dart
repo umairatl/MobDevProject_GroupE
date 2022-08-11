@@ -13,14 +13,19 @@ class Explore extends StatefulWidget {
 class _ExploreState extends State<Explore> {
   @override
   Widget build(BuildContext context) {
+    var width = MediaQuery.of(context).size.width;
+    var height = MediaQuery.of(context).size.height;
     const thepurple = Color(0xFF733FF1);
     const theblue = Color(0xff202032);
     const thewhite = Colors.white;
     Size size = MediaQuery.of(context).size;
     return Scaffold(
       backgroundColor: thewhite,
-      body: Container(),
-      bottomNavigationBar: FadeInUp(child: BottomNa()),
+      body: Container(
+        width: width,
+        height: height,
+      ),
+      bottomNavigationBar: BottomNa(),
     );
   }
 }
