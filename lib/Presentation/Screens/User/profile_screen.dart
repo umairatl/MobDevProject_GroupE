@@ -1,19 +1,12 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:animate_do/animate_do.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:recipe_project/details.dart';
-import 'package:recipe_project/model/recipe_api.dart';
-import 'package:recipe_project/model/recipe_list.dart';
 import 'package:recipe_project/navigation/bottomNavBar.dart';
 
-import 'package:recipe_project/widgets/recipe.dart';
-
-import '../User/profile_screen.dart';
-
 class user extends StatefulWidget {
+  const user({Key? key}) : super(key: key);
+
   @override
+  // ignore: library_private_types_in_public_api
   _userState createState() => _userState();
 }
 
@@ -24,12 +17,13 @@ class _userState extends State<user> {
       body: Column(
         children: <Widget>[
           Container(
-              decoration: BoxDecoration(
-                  gradient: LinearGradient(
+              decoration: const BoxDecoration(
+                  // ignore: unnecessary_const
+                  gradient: const LinearGradient(
                       begin: Alignment.topCenter,
                       end: Alignment.bottomCenter,
                       colors: [Colors.teal, Colors.tealAccent])),
-              child: Container(
+              child: SizedBox(
                 width: double.infinity,
                 height: 420.0,
                 child: Center(
@@ -37,34 +31,36 @@ class _userState extends State<user> {
                     crossAxisAlignment: CrossAxisAlignment.center,
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
-                      CircleAvatar(
-                        backgroundImage: NetworkImage(
+                      const CircleAvatar(
+                        // ignore: unnecessary_const
+                        backgroundImage: const NetworkImage(
                           "https://www.pinkvilla.com/files/styles/amp_metadata_content_image_min_696px_wide/public/zayn_malik_new_look.jpg?itok=r-t4ySDp",
                         ),
                         radius: 55.0,
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 20.0,
                       ),
-                      Text(
+                      const Text(
                         "Umairatul Begum",
                         style: TextStyle(
                           fontSize: 25.0,
                           color: Colors.black,
                         ),
                       ),
-                      Icon(
+                      const Icon(
                         Icons.location_on,
                       ),
-                      Text(
+                      const Text(
                         "Cyberjaya, Malaysia",
-                        style: TextStyle(fontSize: 16, color: Colors.black),
+                        style:
+                            const TextStyle(fontSize: 16, color: Colors.black),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 20.0,
                       ),
                       Card(
-                        margin: EdgeInsets.symmetric(
+                        margin: const EdgeInsets.symmetric(
                             horizontal: 20.0, vertical: 5.0),
                         clipBehavior: Clip.antiAlias,
                         color: Colors.white,
@@ -76,7 +72,7 @@ class _userState extends State<user> {
                             children: <Widget>[
                               Expanded(
                                 child: Column(
-                                  children: <Widget>[
+                                  children: const <Widget>[
                                     Icon(Icons.thumb_up_alt_outlined),
                                     Text(
                                       "Favourites",
@@ -101,7 +97,7 @@ class _userState extends State<user> {
                               ),
                               Expanded(
                                 child: Column(
-                                  children: <Widget>[
+                                  children: const <Widget>[
                                     Icon(Icons.comment_outlined),
                                     Text(
                                       "Reviews",
@@ -126,7 +122,7 @@ class _userState extends State<user> {
                               ),
                               Expanded(
                                 child: Column(
-                                  children: <Widget>[
+                                  children: const <Widget>[
                                     Icon(Icons.people_alt_outlined),
                                     Text(
                                       "Following",
@@ -157,54 +153,50 @@ class _userState extends State<user> {
                   ),
                 ),
               )),
-          Container(
-            child: Padding(
-              padding:
-                  const EdgeInsets.symmetric(vertical: 30.0, horizontal: 16.0),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: <Widget>[
-                  Text(
-                    "About Me",
-                    style: TextStyle(
-                        color: Colors.teal,
-                        fontStyle: FontStyle.normal,
-                        fontSize: 28.0),
+          Padding(
+            padding:
+                const EdgeInsets.symmetric(vertical: 30.0, horizontal: 16.0),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: const <Widget>[
+                Text(
+                  "About Me",
+                  style: TextStyle(
+                      color: Colors.teal,
+                      fontStyle: FontStyle.normal,
+                      fontSize: 28.0),
+                ),
+                SizedBox(
+                  height: 10.0,
+                ),
+                Text(
+                  'My name is Begum and I love cheffing da tings if you need me to whip out a banger din din, you know who to see',
+                  style: TextStyle(
+                    fontSize: 20.0,
+                    fontStyle: FontStyle.italic,
+                    fontWeight: FontWeight.w300,
+                    color: Colors.black,
+                    letterSpacing: 2.0,
                   ),
-                  SizedBox(
-                    height: 10.0,
-                  ),
-                  Text(
-                    'My name is Begum and I love cheffing da tings if you need me to whip out a banger din din, you know who to see',
-                    style: TextStyle(
-                      fontSize: 20.0,
-                      fontStyle: FontStyle.italic,
-                      fontWeight: FontWeight.w300,
-                      color: Colors.black,
-                      letterSpacing: 2.0,
-                    ),
-                  ),
-                ],
-              ),
+                ),
+              ],
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 20.0,
           ),
-          Container(
+          SizedBox(
             width: 300.00,
             child: ElevatedButton.icon(
-              label: Text('Edit Profile'),
-              icon: Icon(Icons.edit),
-              onPressed: () {
-                print('Pressed');
-              },
+              label: const Text('Edit Profile'),
+              icon: const Icon(Icons.edit),
+              onPressed: () {},
             ),
           ),
         ],
       ),
-      bottomNavigationBar: FadeInUp(child: BottomNa()),
+      bottomNavigationBar: FadeInUp(child: const BottomNa()),
     );
   }
 }
