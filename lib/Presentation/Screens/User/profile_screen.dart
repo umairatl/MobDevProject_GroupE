@@ -194,8 +194,9 @@ class _userState extends State<user> {
           ),
           Container(
             width: 300.00,
-            child: ElevatedButton(
-              child: Text('Edit Profile'),
+            child: ElevatedButton.icon(
+              label: Text('Edit Profile'),
+              icon: Icon(Icons.edit),
               onPressed: () {
                 print('Pressed');
               },
