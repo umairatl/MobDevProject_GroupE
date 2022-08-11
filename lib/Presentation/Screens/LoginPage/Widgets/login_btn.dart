@@ -18,21 +18,25 @@ class LoginBtn extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    const thepurple = Color(0xFF733FF1);
+    const theblue = Color(0xff202032);
+    const thewhite = Colors.white;
     return Padding(
       padding: kHPadding,
       child: OutlinedButton(
         focusNode: focusNode,
         style: OutlinedButton.styleFrom(
-            side: const BorderSide(color: Colors.blue, width: 1),
+            side: const BorderSide(color: thepurple, width: 1),
             minimumSize: const Size(double.infinity, 54),
-            backgroundColor: Colors.blue[50]),
+            backgroundColor: theblue),
         onPressed: () {
           BlocProvider.of<AuthBloc>(context)
               .add(Login(userName.text, password.text));
         },
         child: const Text(
           'Login',
-          style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+          style: TextStyle(
+              fontSize: 20, fontWeight: FontWeight.bold, color: thewhite),
         ),
       ),
     );
