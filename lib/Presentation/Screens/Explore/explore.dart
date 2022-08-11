@@ -17,6 +17,8 @@ class _exploreState extends State<explore> {
     const theblue = Color(0xff202032);
     const thewhite = Colors.white;
     Size size = MediaQuery.of(context).size;
+
+    
     return Scaffold(
       backgroundColor: thewhite,
       body: Container(),

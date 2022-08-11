@@ -115,39 +115,11 @@ class _HomepageState extends State<Homepage> {
       appBar: AppBar(
         elevation: 2,
         backgroundColor: theblue,
-        actions: [
-          FadeIn(
-            delay: const Duration(seconds: 1),
-            child: Row(
-              children: <Widget>[
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: const [
-                    Text(
-                      "Welcome back",
-                      style: TextStyle(color: Colors.grey),
-                    ),
-                    Text(
-                      "Begum",
-                      style: TextStyle(
-                        color: thewhite,
-                        fontSize: 25,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ],
-                ),
-                Container(
-                  height: 50,
-                  width: 50,
-                  margin: const EdgeInsets.only(left: 230, right: 0),
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(30), color: theblue),
-                ),
-              ],
-            ),
-          ),
-        ],
+        title: Text("H O M E",
+            style: GoogleFonts.lato(
+                color: Colors.white,
+                fontSize: 23,
+                fontWeight: FontWeight.bold)),
       ),
       body: isLoading
           ? Center(child: CircularProgressIndicator())
@@ -163,12 +135,12 @@ class _HomepageState extends State<Homepage> {
                       decoration: InputDecoration(
                           prefixIcon:
                               const Icon(Icons.search, color: thepurple),
-                          hintText: 'Search Recipe Tittle',
+                          hintText: 'Search Recipe Title',
                           hintStyle: TextStyle(color: theblue),
                           border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(20),
                               borderSide: const BorderSide(color: thepurple))),
-                      onChanged: searchRecipe,
+                      onChanged: searchRecipe
                     ),
                   ),
                   SizedBox(
@@ -234,7 +206,7 @@ class _HomepageState extends State<Homepage> {
                 ],
               ),
             ),
-      bottomNavigationBar: FadeInUp(child: BottomNa()),
+      bottomNavigationBar: FadeInUp(child:const  BottomNa()),
     );
   }
 }
