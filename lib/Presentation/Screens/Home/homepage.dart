@@ -93,8 +93,9 @@ class _HomepageState extends State<Homepage> {
           FadeIn(
             delay: const Duration(seconds: 1),
             child: Container(
+              margin: const EdgeInsets.only(left: 0, right: 280),
               child: Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: <Widget>[
                   Column(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -103,17 +104,15 @@ class _HomepageState extends State<Homepage> {
                         "Welcome back",
                         style: TextStyle(color: Colors.grey),
                       ),
-                      Expanded(
-                        child: Text(
-                          "Begum",
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                            color: thewhite,
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold,
-                          ),
+                      Text(
+                        "Begum",
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          color: thewhite,
+                          fontSize: 25,
+                          fontWeight: FontWeight.bold,
                         ),
-                      )
+                      ),
                     ],
                   ),
                 ],
