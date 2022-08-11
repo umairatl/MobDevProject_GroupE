@@ -91,37 +91,32 @@ class _HomepageState extends State<Homepage> {
         actions: [
           FadeIn(
             delay: const Duration(seconds: 1),
-            child: Row(
-              children: <Widget>[
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: const [
-                    Text(
-                      "Welcome back",
-                      style: TextStyle(color: Colors.grey),
-                    ),
-                    Text(
-                      "Begum",
-                      style: TextStyle(
-                        color: thewhite,
-                        fontSize: 25,
-                        fontWeight: FontWeight.bold,
+            child: Container(
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: const <Widget>[
+                      Text(
+                        "Welcome back",
+                        style: TextStyle(color: Colors.grey),
                       ),
-                    ),
-                  ],
-                ),
-                Container(
-                  height: 50,
-                  width: 50,
-                  margin: const EdgeInsets.only(left: 200, right: 10),
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(30), color: theblue),
-                  child: const Icon(
-                    Icons.logout,
-                    color: thewhite,
+                      Expanded(
+                        child: Text(
+                          "Begum",
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            color: thewhite,
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      )
+                    ],
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
         ],
