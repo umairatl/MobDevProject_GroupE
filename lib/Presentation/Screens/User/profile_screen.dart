@@ -28,7 +28,7 @@ class _userState extends State<user> {
                   gradient: LinearGradient(
                       begin: Alignment.topCenter,
                       end: Alignment.bottomCenter,
-                      colors: [Colors.lightGreen, Colors.lightGreenAccent])),
+                      colors: [Colors.teal, Colors.tealAccent])),
               child: Container(
                 width: double.infinity,
                 height: 420.0,
@@ -77,11 +77,11 @@ class _userState extends State<user> {
                               Expanded(
                                 child: Column(
                                   children: <Widget>[
-                                    Icon(Icons.thumb_up_alt),
+                                    Icon(Icons.thumb_up_alt_outlined),
                                     Text(
                                       "Favourites",
                                       style: TextStyle(
-                                        color: Colors.greenAccent,
+                                        color: Colors.tealAccent,
                                         fontSize: 22.0,
                                         fontWeight: FontWeight.bold,
                                       ),
@@ -106,7 +106,7 @@ class _userState extends State<user> {
                                     Text(
                                       "Reviews",
                                       style: TextStyle(
-                                        color: Colors.greenAccent,
+                                        color: Colors.tealAccent,
                                         fontSize: 22.0,
                                         fontWeight: FontWeight.bold,
                                       ),
@@ -127,11 +127,11 @@ class _userState extends State<user> {
                               Expanded(
                                 child: Column(
                                   children: <Widget>[
-                                    Icon(Icons.people_alt),
+                                    Icon(Icons.people_alt_outlined),
                                     Text(
                                       "Following",
                                       style: TextStyle(
-                                        color: Colors.greenAccent,
+                                        color: Colors.tealAccent,
                                         fontSize: 22.0,
                                         fontWeight: FontWeight.bold,
                                       ),
@@ -168,7 +168,7 @@ class _userState extends State<user> {
                   Text(
                     "About Me",
                     style: TextStyle(
-                        color: Colors.greenAccent,
+                        color: Colors.teal,
                         fontStyle: FontStyle.normal,
                         fontSize: 28.0),
                   ),
@@ -179,7 +179,7 @@ class _userState extends State<user> {
                     'My name is Begum and I love cheffing da tings if you need me to whip out a banger din din, you know who to see',
                     style: TextStyle(
                       fontSize: 20.0,
-                      fontStyle: FontStyle.normal,
+                      fontStyle: FontStyle.italic,
                       fontWeight: FontWeight.w300,
                       color: Colors.black,
                       letterSpacing: 2.0,
