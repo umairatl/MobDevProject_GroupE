@@ -129,7 +129,7 @@ class _userState extends State<user> {
                                   children: <Widget>[
                                     Icon(Icons.people_alt),
                                     Text(
-                                      "Follow",
+                                      "Following",
                                       style: TextStyle(
                                         color: Colors.greenAccent,
                                         fontSize: 22.0,
@@ -194,33 +194,12 @@ class _userState extends State<user> {
           ),
           Container(
             width: 300.00,
-            child: RaisedButton(
-                onPressed: () {},
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(80.0)),
-                elevation: 0.0,
-                padding: EdgeInsets.all(0.0),
-                child: Ink(
-                  decoration: BoxDecoration(
-                    gradient: LinearGradient(
-                        begin: Alignment.centerRight,
-                        end: Alignment.centerLeft,
-                        colors: [Colors.lightGreenAccent, Colors.greenAccent]),
-                    borderRadius: BorderRadius.circular(30.0),
-                  ),
-                  child: Container(
-                    constraints:
-                        BoxConstraints(maxWidth: 300.0, minHeight: 50.0),
-                    alignment: Alignment.center,
-                    child: Text(
-                      "Edit Profile",
-                      style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 26.0,
-                          fontWeight: FontWeight.w300),
-                    ),
-                  ),
-                )),
+            child: ElevatedButton(
+              child: Text('Edit Profile'),
+              onPressed: () {
+                print('Pressed');
+              },
+            ),
           ),
         ],
       ),
