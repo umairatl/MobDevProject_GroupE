@@ -1,19 +1,12 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:animate_do/animate_do.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:recipe_project/details.dart';
-import 'package:recipe_project/model/recipe_api.dart';
-import 'package:recipe_project/model/recipe_list.dart';
 import 'package:recipe_project/navigation/bottomNavBar.dart';
 
-import 'package:recipe_project/widgets/recipe.dart';
-
-import '../User/profile_screen.dart';
-
 class user extends StatefulWidget {
+  const user({Key? key}) : super(key: key);
+
   @override
+  // ignore: library_private_types_in_public_api
   _userState createState() => _userState();
 }
 
@@ -24,12 +17,13 @@ class _userState extends State<user> {
       body: Column(
         children: <Widget>[
           Container(
-              decoration: BoxDecoration(
-                  gradient: LinearGradient(
+              decoration: const BoxDecoration(
+                  // ignore: unnecessary_const
+                  gradient: const LinearGradient(
                       begin: Alignment.topCenter,
                       end: Alignment.bottomCenter,
-                      colors: [Colors.lightGreen, Colors.lightGreenAccent])),
-              child: Container(
+                      colors: [Colors.teal, Colors.tealAccent])),
+              child: SizedBox(
                 width: double.infinity,
                 height: 420.0,
                 child: Center(
@@ -37,34 +31,36 @@ class _userState extends State<user> {
                     crossAxisAlignment: CrossAxisAlignment.center,
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
-                      CircleAvatar(
-                        backgroundImage: NetworkImage(
+                      const CircleAvatar(
+                        // ignore: unnecessary_const
+                        backgroundImage: const NetworkImage(
                           "https://www.pinkvilla.com/files/styles/amp_metadata_content_image_min_696px_wide/public/zayn_malik_new_look.jpg?itok=r-t4ySDp",
                         ),
                         radius: 55.0,
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 20.0,
                       ),
-                      Text(
+                      const Text(
                         "Umairatul Begum",
                         style: TextStyle(
                           fontSize: 25.0,
                           color: Colors.black,
                         ),
                       ),
-                      Icon(
+                      const Icon(
                         Icons.location_on,
                       ),
-                      Text(
+                      const Text(
                         "Cyberjaya, Malaysia",
-                        style: TextStyle(fontSize: 16, color: Colors.black),
+                        style:
+                            const TextStyle(fontSize: 16, color: Colors.black),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 20.0,
                       ),
                       Card(
-                        margin: EdgeInsets.symmetric(
+                        margin: const EdgeInsets.symmetric(
                             horizontal: 20.0, vertical: 5.0),
                         clipBehavior: Clip.antiAlias,
                         color: Colors.white,
@@ -76,12 +72,12 @@ class _userState extends State<user> {
                             children: <Widget>[
                               Expanded(
                                 child: Column(
-                                  children: <Widget>[
-                                    Icon(Icons.thumb_up_alt),
+                                  children: const <Widget>[
+                                    Icon(Icons.thumb_up_alt_outlined),
                                     Text(
                                       "Favourites",
                                       style: TextStyle(
-                                        color: Colors.greenAccent,
+                                        color: Colors.tealAccent,
                                         fontSize: 22.0,
                                         fontWeight: FontWeight.bold,
                                       ),
@@ -101,12 +97,12 @@ class _userState extends State<user> {
                               ),
                               Expanded(
                                 child: Column(
-                                  children: <Widget>[
+                                  children: const <Widget>[
                                     Icon(Icons.comment_outlined),
                                     Text(
                                       "Reviews",
                                       style: TextStyle(
-                                        color: Colors.greenAccent,
+                                        color: Colors.tealAccent,
                                         fontSize: 22.0,
                                         fontWeight: FontWeight.bold,
                                       ),
@@ -126,12 +122,12 @@ class _userState extends State<user> {
                               ),
                               Expanded(
                                 child: Column(
-                                  children: <Widget>[
-                                    Icon(Icons.people_alt),
+                                  children: const <Widget>[
+                                    Icon(Icons.people_alt_outlined),
                                     Text(
-                                      "Follow",
+                                      "Following",
                                       style: TextStyle(
-                                        color: Colors.greenAccent,
+                                        color: Colors.tealAccent,
                                         fontSize: 22.0,
                                         fontWeight: FontWeight.bold,
                                       ),
@@ -157,74 +153,50 @@ class _userState extends State<user> {
                   ),
                 ),
               )),
-          Container(
-            child: Padding(
-              padding:
-                  const EdgeInsets.symmetric(vertical: 30.0, horizontal: 16.0),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: <Widget>[
-                  Text(
-                    "About Me",
-                    style: TextStyle(
-                        color: Colors.greenAccent,
-                        fontStyle: FontStyle.normal,
-                        fontSize: 28.0),
-                  ),
-                  SizedBox(
-                    height: 10.0,
-                  ),
-                  Text(
-                    'My name is Begum and I love cheffing da tings if you need me to whip out a banger din din, you know who to see',
-                    style: TextStyle(
-                      fontSize: 20.0,
+          Padding(
+            padding:
+                const EdgeInsets.symmetric(vertical: 30.0, horizontal: 16.0),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: const <Widget>[
+                Text(
+                  "About Me",
+                  style: TextStyle(
+                      color: Colors.teal,
                       fontStyle: FontStyle.normal,
-                      fontWeight: FontWeight.w300,
-                      color: Colors.black,
-                      letterSpacing: 2.0,
-                    ),
+                      fontSize: 28.0),
+                ),
+                SizedBox(
+                  height: 10.0,
+                ),
+                Text(
+                  'My name is Begum and I love cheffing da tings if you need me to whip out a banger din din, you know who to see',
+                  style: TextStyle(
+                    fontSize: 20.0,
+                    fontStyle: FontStyle.italic,
+                    fontWeight: FontWeight.w300,
+                    color: Colors.black,
+                    letterSpacing: 2.0,
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 20.0,
           ),
-          Container(
+          SizedBox(
             width: 300.00,
-            child: RaisedButton(
-                onPressed: () {},
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(80.0)),
-                elevation: 0.0,
-                padding: EdgeInsets.all(0.0),
-                child: Ink(
-                  decoration: BoxDecoration(
-                    gradient: LinearGradient(
-                        begin: Alignment.centerRight,
-                        end: Alignment.centerLeft,
-                        colors: [Colors.lightGreenAccent, Colors.greenAccent]),
-                    borderRadius: BorderRadius.circular(30.0),
-                  ),
-                  child: Container(
-                    constraints:
-                        BoxConstraints(maxWidth: 300.0, minHeight: 50.0),
-                    alignment: Alignment.center,
-                    child: Text(
-                      "Edit Profile",
-                      style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 26.0,
-                          fontWeight: FontWeight.w300),
-                    ),
-                  ),
-                )),
+            child: ElevatedButton.icon(
+              label: const Text('Edit Profile'),
+              icon: const Icon(Icons.edit),
+              onPressed: () {},
+            ),
           ),
         ],
       ),
-      bottomNavigationBar: FadeInUp(child: BottomNa()),
+      bottomNavigationBar: FadeInUp(child: const BottomNa()),
     );
   }
 }

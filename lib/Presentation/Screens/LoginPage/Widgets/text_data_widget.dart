@@ -10,7 +10,7 @@ class TextData extends StatelessWidget {
     return RichText(
       text: TextSpan(
         text: 'YUMLYY ',
-        style: TextStyle(
+        style: const TextStyle(
             fontStyle: FontStyle.italic,
             fontSize: 20.00,
             fontWeight: FontWeight.bold,
