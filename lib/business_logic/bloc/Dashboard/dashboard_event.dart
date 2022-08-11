@@ -1,6 +1,6 @@
-part of 'dashboard_bloc.dart';
+// part of 'dashboard_bloc.dart';
 
-@immutable
-abstract class DashboardEvent {}
+// @immutable
+// abstract class DashboardEvent {}
 
-class NavBack extends DashboardEvent {}
+// class NavBack extends DashboardEvent {}

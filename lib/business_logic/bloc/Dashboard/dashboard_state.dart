@@ -1,10 +1,10 @@
-part of 'dashboard_bloc.dart';
+// part of 'dashboard_bloc.dart';
 
-@immutable
-abstract class DashboardState {}
+// @immutable
+// abstract class DashboardState {}
 
-class DashboardInitial extends DashboardState {}
+// class DashboardInitial extends DashboardState {}
 
-class DashboardLoading extends DashboardState {}
+// class DashboardLoading extends DashboardState {}
 
-class DashboardNav extends DashboardState{}
+// class DashboardNav extends DashboardState{}
