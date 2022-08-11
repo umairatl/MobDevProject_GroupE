@@ -45,16 +45,16 @@ class _userState extends State<user> {
                         "Umairatul Begum",
                         style: TextStyle(
                           fontSize: 25.0,
-                          color: Colors.black,
+                          color: Colors.white,
                         ),
                       ),
                       const Icon(
-                        Icons.location_on,
+                        Icons.location_on_outlined,
                       ),
                       const Text(
                         "Cyberjaya, Malaysia",
                         style:
-                            const TextStyle(fontSize: 16, color: Colors.black),
+                            const TextStyle(fontSize: 16, color: Colors.white),
                       ),
                       const SizedBox(
                         height: 20.0,

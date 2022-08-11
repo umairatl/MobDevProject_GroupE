@@ -99,7 +99,7 @@ class _HomepageState extends State<Homepage> {
                   children: const [
                     Text(
                       "Welcome back",
-                      style: TextStyle(color: Colors.grey),
+                      style: TextStyle(color: Colors.white),
                     ),
                     Text(
                       "Begum",

@@ -19,7 +19,7 @@ class LoadingWidget extends StatelessWidget {
           child: Container(
             width: double.infinity,
             height: double.infinity,
-            color: Colors.green,
+            color: Color.fromARGB(255, 251, 251, 251),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: const [
