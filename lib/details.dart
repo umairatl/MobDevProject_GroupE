@@ -49,7 +49,7 @@ class _RecipeDetailsState extends State<RecipeDetails> {
                 style: TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 25,
-                    color: Colors.teal.shade600),
+                    color: Color(0xff202032)),
                 textAlign: TextAlign.left,
               ),
             ),
@@ -68,7 +68,7 @@ class _RecipeDetailsState extends State<RecipeDetails> {
               children: [
                 Icon(
                   Icons.timer_rounded,
-                  color: Colors.green[200],
+                  color: Color(0xFF733FF1),
                   size: 24,
                 ),
                 SizedBox(width: 10),
@@ -87,7 +87,7 @@ class _RecipeDetailsState extends State<RecipeDetails> {
               children: [
                 Icon(
                   Icons.food_bank_outlined,
-                  color: Colors.green[200],
+                  color: Color(0xFF733FF1),
                   size: 24,
                 ),
                 SizedBox(width: 10),
@@ -110,7 +110,7 @@ class _RecipeDetailsState extends State<RecipeDetails> {
                   style: TextStyle(fontSize: 16, color: Colors.white),
                 ),
                 style: ElevatedButton.styleFrom(
-                  primary: Colors.teal,
+                  primary: Color(0xff202032),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(16),
                   ),

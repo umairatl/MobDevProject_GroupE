@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
         title: 'Recipe Apps',
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
-          primarySwatch: Colors.teal,
+          primarySwatch: Colors.deepPurple,
         ),
         home: Onboarding(),
         onGenerateRoute: RouteGenerator().generateRoute,

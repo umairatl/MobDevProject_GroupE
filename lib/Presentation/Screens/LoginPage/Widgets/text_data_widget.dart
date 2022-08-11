@@ -14,14 +14,14 @@ class TextData extends StatelessWidget {
             fontStyle: FontStyle.italic,
             fontSize: 20.00,
             fontWeight: FontWeight.bold,
-            color: Colors.green),
+            color: Color(0xFF733FF1)),
         children: <TextSpan>[
           TextSpan(
             text: message,
             style: const TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: 20.00,
-                color: Colors.green),
+                color: Color(0xff202032)),
           ),
         ],
       ),
