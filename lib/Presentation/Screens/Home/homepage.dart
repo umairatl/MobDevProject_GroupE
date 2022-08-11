@@ -131,7 +131,7 @@ class _HomepageState extends State<Homepage> {
           ? Center(child: CircularProgressIndicator())
           : Column(
               children: [
-                SizedBox(height: 10),
+                // SizedBox(height: 10),
                 SizedBox(
                   width: 350,
                   child: TextField(
