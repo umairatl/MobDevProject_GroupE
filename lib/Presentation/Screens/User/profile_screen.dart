@@ -2,15 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:animate_do/animate_do.dart';
 import 'package:recipe_project/navigation/bottomNavBar.dart';
 
-class user extends StatefulWidget {
-  const user({Key? key}) : super(key: key);
-
+class User extends StatefulWidget {
   @override
-  // ignore: library_private_types_in_public_api
-  _userState createState() => _userState();
+  _UserState createState() => _UserState();
 }
 
-class _userState extends State<user> {
+class _UserState extends State<User> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

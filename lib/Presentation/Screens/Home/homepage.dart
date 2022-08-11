@@ -1,5 +1,6 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:recipe_project/Presentation/Screens/Reviews/reviews.dart';
 import 'package:recipe_project/details.dart';
 import 'package:recipe_project/model/recipe_api.dart';
@@ -47,7 +48,7 @@ class _HomepageState extends State<Homepage> {
           builder: (context) {
             return const AlertDialog(
               title: Text("Error"),
-              content: Text("Cannot load the data"),
+              content: Text("Cannot load data for recipes"),
             );
           },
         );
@@ -60,7 +61,30 @@ class _HomepageState extends State<Homepage> {
   }
 
   Future<void> getReviews() async {
-    listReview = await ReviewAPI.fetchRecipe();
+    try {
+      listReview = await ReviewAPI.fetchRecipe();
+
+      setState(() {
+        isLoading = false;
+      });
+    } catch (e, st) {
+      listReview = [];
+      if (mounted) {
+        showDialog(
+          context: context,
+          builder: (context) {
+            return const AlertDialog(
+              title: Text("Error"),
+              content: Text("Cannot load data for reviews"),
+            );
+          },
+        );
+      }
+    } finally {
+      setState(() {
+        isLoading = false;
+      });
+    }
   }
 
   void navigateToDetails(BuildContext context, RecipeModel data) {
@@ -83,119 +107,108 @@ class _HomepageState extends State<Homepage> {
     const theblue = Color(0xff202032);
     const thewhite = Colors.white;
 
+    var we = MediaQuery.of(context).size.width;
+    var he = MediaQuery.of(context).size.height;
+
     return Scaffold(
-      resizeToAvoidBottomInset: false,
       backgroundColor: thewhite,
       appBar: AppBar(
-        elevation: 0,
+        elevation: 2,
         backgroundColor: theblue,
-        actions: [
-          FadeIn(
-            delay: const Duration(seconds: 1),
-            child: Row(
-              children: <Widget>[
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: const [
-                    Text(
-                      "Welcome back",
-                      style: TextStyle(color: Colors.grey),
-                    ),
-                    Text(
-                      "Begum",
-                      style: TextStyle(
-                        color: thewhite,
-                        fontSize: 25,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ],
-                ),
-                Container(
-                  height: 50,
-                  width: 50,
-                  margin: const EdgeInsets.only(left: 200, right: 10),
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(30), color: theblue),
-                  child: const Icon(
-                    Icons.logout,
-                    color: thewhite,
-                  ),
-                ),
-              ],
-            ),
-          ),
-        ],
+
+        title: Text("H O M E",
+            style: GoogleFonts.lato(
+                color: Colors.white,
+                fontSize: 23,
+                fontWeight: FontWeight.bold)),
+
       ),
       body: isLoading
           ? Center(child: CircularProgressIndicator())
-          : Column(
-              children: [
-                SizedBox(height: 10),
-                SizedBox(
-                  width: 350,
-                  child: TextField(
-                    controller: controller,
-                    decoration: InputDecoration(
-                        prefixIcon: const Icon(Icons.search),
-                        hintText: 'Search Recipe Tittle',
-                        border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(20),
-                            borderSide: const BorderSide(color: thepurple))),
-                    onChanged: searchRecipe,
+          : SizedBox(
+              child: Column(
+                children: [
+                  SizedBox(height: 10),
+                  Positioned(
+                    width: we * 1,
+                    height: he * 0.09,
+                    child: TextField(
+                      controller: controller,
+                      decoration: InputDecoration(
+                          prefixIcon:
+                              const Icon(Icons.search, color: thepurple),
+                          hintText: 'Search Recipe Title',
+                          hintStyle: TextStyle(color: theblue),
+                          border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(20),
+                              borderSide: const BorderSide(color: thepurple))),
+                      onChanged: searchRecipe
+                    ),
                   ),
-                ),
-                SizedBox(height: 10),
-                Text(
-                  'Menu List',
-                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-                  textAlign: TextAlign.left,
-                ),
-                Expanded(
-                  child: ListView.builder(
-                    shrinkWrap: true,
-                    scrollDirection: Axis.horizontal,
-                    itemCount: listRecipes.length,
-                    itemBuilder: (context, index) {
-                      return SizedBox(
-                        child: RecipeCard(
-                          onTap: () {
-                            navigateToDetails(context, listRecipes[index]);
-                          },
-                          title: listRecipes[index].name,
-                          cookTime: listRecipes[index].totalTime,
-                          rating: listRecipes[index].rating.toString(),
-                          thumbnailUrl: listRecipes[index].images,
-                        ),
-                      );
-                    },
+                  SizedBox(
+                    height: he * 0.05,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        Text('Menu List',
+                            style: GoogleFonts.lato(
+                                color: thepurple,
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold)),
+                      ],
+                    ),
                   ),
-                ),
-                SizedBox(height: 20),
-                Text(
-                  'User Reviews',
-                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-                  textAlign: TextAlign.left,
-                ),
-                Expanded(
-                  child: ListView.builder(
-                    shrinkWrap: true,
-                    scrollDirection: Axis.horizontal,
-                    itemCount: listReview.length,
-                    itemBuilder: (context, index) {
-                      return SizedBox(
-                        child: ReviewCard(
-                          name: listReview[index].name,
-                          rating: listReview[index].rating,
-                          comment: listReview[index].comment,
-                        ),
-                      );
-                    },
+                  Expanded(
+                    child: ListView.builder(
+                      scrollDirection: Axis.horizontal,
+                      itemCount: listRecipes.length,
+                      itemBuilder: (context, index) {
+                        return SizedBox(
+                          child: RecipeCard(
+                            onTap: () {
+                              navigateToDetails(context, listRecipes[index]);
+                            },
+                            title: listRecipes[index].name,
+                            cookTime: listRecipes[index].totalTime,
+                            rating: listRecipes[index].rating.toString(),
+                            thumbnailUrl: listRecipes[index].images,
+                          ),
+                        );
+                      },
+                    ),
                   ),
-                ),
-              ],
+                  SizedBox(
+                    height: he * 0.05,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        Text('Reviews',
+                            style: GoogleFonts.lato(
+                                color: thepurple,
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold)),
+                      ],
+                    ),
+                  ),
+                  Expanded(
+                    child: ListView.builder(
+                      scrollDirection: Axis.horizontal,
+                      itemCount: listReview.length,
+                      itemBuilder: (context, index) {
+                        return SizedBox(
+                          child: ReviewCard(
+                            name: listReview[index].name,
+                            rating: listReview[index].rating,
+                            comment: listReview[index].comment,
+                          ),
+                        );
+                      },
+                    ),
+                  ),
+                ],
+              ),
             ),
-      bottomNavigationBar: FadeInUp(child: BottomNa()),
+      bottomNavigationBar: FadeInUp(child:const  BottomNa()),
     );
   }
 }

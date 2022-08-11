@@ -32,20 +32,19 @@ class RecipeCard extends StatelessWidget {
     const thewhite = Colors.white;
 
     return Container(
-        margin: EdgeInsets.symmetric(horizontal: 15, vertical: 7),
-        padding: EdgeInsets.all(10),
+        margin: EdgeInsets.symmetric(horizontal: 15, vertical: 25),
         decoration: BoxDecoration(
-          color: Colors.grey.shade100,
-          borderRadius: BorderRadius.circular(15),
+          color: theblue,
+          borderRadius: BorderRadius.circular(20),
           boxShadow: [
             BoxShadow(
-              color: theblue.withOpacity(1.0),
+              color: theblue,
               offset: Offset(
                 0.0,
-                20.0,
+                10.0,
               ),
-              blurRadius: 6.0,
-              spreadRadius: -7.5,
+              blurRadius: 10.0,
+              spreadRadius: -6.0,
             ),
           ],
         ),
@@ -53,23 +52,59 @@ class RecipeCard extends StatelessWidget {
           onTap: onTap,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
+            // children:  [
+            //          Column(
             mainAxisSize: MainAxisSize.min,
             children: [
               SizedBox(
-                width: 230,
-                child: Image.network(thumbnailUrl),
+                width: 220,
+                child: Image.network(thumbnailUrl,
+                    loadingBuilder: (context, child, loadingProgress) {
+                  if (loadingProgress == null) {
+                    return child;
+                  }
+                  return Center(
+                    child: CircularProgressIndicator(
+                      value: loadingProgress.expectedTotalBytes != null
+                          ? loadingProgress.cumulativeBytesLoaded /
+                              loadingProgress.expectedTotalBytes!
+                          : null,
+                    ),
+                  );
+                }),
               ),
-              SizedBox(height: 5),
-              SizedBox(
-                width: 240,
-                child: Text(
-                  title,
-                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-                  textAlign: TextAlign.center,
+
+              Text(title,
+                  style: TextStyle(
+                      fontSize: 17,
+                      fontWeight: FontWeight.w500,
+                      color: thewhite,
+                      overflow: TextOverflow.ellipsis)),
+              Container(
+                padding: EdgeInsets.all(5),
+                margin: EdgeInsets.all(2),
+                decoration: BoxDecoration(
+                  color: thepurple,
+                  borderRadius: BorderRadius.circular(15),
                 ),
+                // child: Row(
+                //     children: List.generate(
+                //   rating,
+                //   (index) => IconButton(
+                //     icon: Icon(Icons.star, size: 18),
+                //     color: Colors.yellow,
+                //     onPressed: () {},
+                //   ),
+                // )),
               ),
+              // SizedBox(
+              //   width: 300,
+              //   child: Text('" $\\ "', textAlign: TextAlign.center),
+              // )
             ],
           ),
+          // alignment: Alignment.bottomLeft,
         ));
+    // ));
   }
 }
