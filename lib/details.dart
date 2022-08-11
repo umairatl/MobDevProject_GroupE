@@ -14,6 +14,10 @@ class RecipeDetails extends StatefulWidget {
 class _RecipeDetailsState extends State<RecipeDetails> {
   @override
   Widget build(BuildContext context) {
+    const thepurple = Color(0xFF733FF1);
+    const theblue = Color(0xff202032);
+    const thewhite = Colors.white;
+
     final Uri _url = Uri.parse(widget.model.urlMenu);
 
     Future<void> _openRecipe() async {
@@ -24,7 +28,15 @@ class _RecipeDetailsState extends State<RecipeDetails> {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Recipe Details'),
+        backgroundColor: theblue,
+        title: const Text(
+          'Recipe Details',
+          style: TextStyle(
+            color: thewhite,
+            fontSize: 25,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
       ),
       body: Center(
         child: Column(
@@ -41,15 +53,13 @@ class _RecipeDetailsState extends State<RecipeDetails> {
                 fit: BoxFit.fill,
               ),
             ),
-            SizedBox(height: 15),
+
             Padding(
               padding: const EdgeInsets.all(10.0),
               child: Text(
                 widget.model.name,
                 style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 25,
-                    color: Colors.teal.shade600),
+                    fontWeight: FontWeight.bold, fontSize: 25, color: theblue),
                 textAlign: TextAlign.left,
               ),
             ),
@@ -68,7 +78,7 @@ class _RecipeDetailsState extends State<RecipeDetails> {
               children: [
                 Icon(
                   Icons.timer_rounded,
-                  color: Colors.green[200],
+                  color: thepurple,
                   size: 24,
                 ),
                 SizedBox(width: 10),
@@ -87,7 +97,7 @@ class _RecipeDetailsState extends State<RecipeDetails> {
               children: [
                 Icon(
                   Icons.food_bank_outlined,
-                  color: Colors.green[200],
+                  color: thepurple,
                   size: 24,
                 ),
                 SizedBox(width: 10),
@@ -107,10 +117,10 @@ class _RecipeDetailsState extends State<RecipeDetails> {
                 onPressed: _openRecipe,
                 child: const Text(
                   'Open Recipe on Yummly',
-                  style: TextStyle(fontSize: 16, color: Colors.white),
+                  style: TextStyle(fontSize: 16, color: thewhite),
                 ),
                 style: ElevatedButton.styleFrom(
-                  primary: Colors.teal,
+                  backgroundColor: thepurple,
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(16),
                   ),

@@ -16,20 +16,21 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider<AuthBloc>(
-        create: (_) => AuthBloc(),
-        child: MaterialApp(
-          title: 'Recipe Apps',
-          debugShowCheckedModeBanner: false,
-          theme: ThemeData(
-            primarySwatch: Colors.teal,
-          ),
-          home: Onboarding(),
-          onGenerateRoute: RouteGenerator().generateRoute,
-          routes: {
-            '/homepage': (context) => Homepage(),
-            '/explore': (context) => explore(),
-            '/user': (context) => user(),
-          },
-        ));
+      create: (_) => AuthBloc(),
+      child: MaterialApp(
+        title: 'Recipe Apps',
+        debugShowCheckedModeBanner: false,
+        theme: ThemeData(
+          primarySwatch: Colors.teal,
+        ),
+        home: Onboarding(),
+        onGenerateRoute: RouteGenerator().generateRoute,
+        routes: {
+          '/homepage': (context) => Homepage(),
+          '/explore': (context) => explore(),
+          '/user': (context) => user(),
+        },
+      ),
+    );
   }
 }
