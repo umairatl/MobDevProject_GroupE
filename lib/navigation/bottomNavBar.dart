@@ -1,13 +1,10 @@
 // ignore_for_file: constant_identifier_names
 
-
-
 import 'package:flutter/material.dart';
 import 'package:recipe_project/Presentation/Screens/Home/homepage.dart';
 import 'package:animate_do/animate_do.dart';
 
-
-enum BottomItems { Home, Saved, User }
+enum BottomItems { Home, Explore, User }
 
 class BottomNa extends StatefulWidget {
   const BottomNa({Key? key}) : super(key: key);
@@ -26,10 +23,10 @@ class _BottomNaState extends State<BottomNa> {
     );
   }
 
-  void navigateToSaved() {
+  void navigateToExplore() {
     Navigator.pushNamed(
       context,
-      '/saved',
+      '/explore',
     );
   }
 
@@ -71,14 +68,14 @@ class _BottomNaState extends State<BottomNa> {
           InkWell(
             onTap: () {
               setState(() {
-                selectedItems = BottomItems.Saved;
-                Navigator.pushNamed(context, '/saved');
+                selectedItems = BottomItems.Explore;
+                Navigator.pushNamed(context, '/explore');
               });
             },
-            child: selectedItems == BottomItems.Saved
-                ? isActiveWidget("Saved")
+            child: selectedItems == BottomItems.Explore
+                ? isActiveWidget("Explore")
                 : const Icon(
-                    Icons.bookmark_border_outlined,
+                    Icons.explore_outlined,
                     color: Colors.grey,
                   ),
           ),
@@ -102,6 +99,9 @@ class _BottomNaState extends State<BottomNa> {
   }
 
   Widget isActiveWidget(String title) {
+    const thepurple = Color(0xFF733FF1);
+    const theblue = Color(0xff202032);
+    const thewhite = Colors.white;
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
@@ -109,7 +109,7 @@ class _BottomNaState extends State<BottomNa> {
           delay: const Duration(milliseconds: 100),
           child: Text(
             title,
-            style: const TextStyle(color: Colors.white),
+            style: const TextStyle(color: thewhite),
           ),
         ),
         SizedBox(
@@ -123,8 +123,8 @@ class _BottomNaState extends State<BottomNa> {
               child: LinearProgressIndicator(
                 minHeight: 10,
                 value: 1,
-                color: Color(0xFF733FF1),
-                backgroundColor: Color(0xff202032),
+                color: thepurple,
+                backgroundColor: theblue,
               )),
         )
       ],

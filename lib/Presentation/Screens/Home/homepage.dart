@@ -1,3 +1,4 @@
+import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:recipe_project/details.dart';
@@ -78,17 +79,28 @@ class _HomepageState extends State<Homepage> {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
+    const thepurple = Color(0xFF733FF1);
+    const theblue = Color(0xff202032);
+    const thewhite = Colors.white;
+
     return Scaffold(
-      backgroundColor: Colors.teal,
+      backgroundColor: thewhite,
       appBar: AppBar(
         elevation: 0,
-        backgroundColor: Colors.transparent,
-        title: const Text('Recipe'),
+        backgroundColor: theblue,
+        actions: [
+          FadeIn(
+            delay:const Duration (seconds: 1), 
+            child: Row(
+              child
+            ))
+        ],
       ),
       body: isLoading
           ? Center(child: CircularProgressIndicator())
           : Column(
               children: [
+                Spacer(flex: 1),
                 TextField(
                   controller: controller,
                   decoration: InputDecoration(
@@ -96,7 +108,7 @@ class _HomepageState extends State<Homepage> {
                       hintText: 'Search Recipe Title',
                       border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(20),
-                          borderSide: const BorderSide(color: Colors.green))),
+                          borderSide: const BorderSide(color: thepurple))),
                   onChanged: searchRecipe,
                 ),
                 Expanded(
@@ -120,7 +132,7 @@ class _HomepageState extends State<Homepage> {
                 ),
               ],
             ),
-      bottomNavigationBar: BottomNa(),
+      bottomNavigationBar: FadeInUp(child: BottomNa()),
     );
   }
 }

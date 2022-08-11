@@ -83,14 +83,15 @@ class _MyHomePageState extends State<MyHomePage> {
               focusNode: usernameFocus,
               textController: userName,
               label: "UserID",
-              icons: const Icon(Icons.person, color: Colors.lightGreenAccent),
-            ),
+              icons: const Icon(Icons.person, color: Color(0xFF733FF1)),
+            ), // Size size = MediaQuery.of(context).size;
+
             HeightSpacer(myHeight: kSpacing),
             InputField(
               focusNode: passwordFocus,
               textController: password,
               label: "Password",
-              icons: const Icon(Icons.lock, color: Colors.lightGreenAccent),
+              icons: const Icon(Icons.lock, color: Color(0xFF733FF1)),
             ),
             HeightSpacer(myHeight: kSpacing),
             LoginBtn(

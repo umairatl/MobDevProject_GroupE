@@ -24,7 +24,7 @@ import 'package:flutter/material.dart';
 
 import 'package:recipe_project/Presentation/Screens/Home/homepage.dart';
 
-import 'package:recipe_project/Presentation/Screens/Saved/saved.dart';
+import 'package:recipe_project/Presentation/Screens/Explore/explore.dart';
 import 'package:recipe_project/Presentation/Screens/User/profile_screen.dart';
 import 'package:provider/provider.dart';
 import 'Presentation/Routes/routes_generator.dart';
@@ -48,7 +48,7 @@ class MyApp extends StatelessWidget {
       onGenerateRoute: RouteGenerator().generateRoute,
       routes: {
         '/homepage': (context) => const Homepage(),
-        '/saved': (context) => saved(),
+        '/explore': (context) => explore(),
         '/user': (context) => user(),
       },
     );
