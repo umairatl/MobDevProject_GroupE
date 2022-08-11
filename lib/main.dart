@@ -21,7 +21,11 @@
 // }
 
 import 'package:flutter/material.dart';
-import 'package:recipe_project/homepage.dart';
+
+import 'package:recipe_project/Presentation/Screens/Home/homepage.dart';
+import 'package:recipe_project/Presentation/Screens/Saved/saved.dart';
+import 'package:recipe_project/Presentation/Screens/User/profile_screen.dart';
+
 import 'Presentation/Routes/routes_generator.dart';
 
 void main() {
@@ -36,11 +40,17 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Recipe Apps',
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-          brightness: Brightness.light, primaryColor: Colors.lightGreen),
+      // theme: ThemeData(
+      //     brightness: Brightness.light, primaryColor: Colors.lightGreen),
+      //   primarySwatch: Colors.teal,
+      // ),
       initialRoute: "/",
       onGenerateRoute: RouteGenerator().generateRoute,
-      routes: {'/homepage': (context) => const Homepage()},
+      routes: {
+        '/homepage': (context) => const Homepage(),
+        '/saved': (context) => saved(),
+        '/user': (context) => user(),
+      },
     );
   }
 }
