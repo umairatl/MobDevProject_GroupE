@@ -23,9 +23,10 @@
 import 'package:flutter/material.dart';
 
 import 'package:recipe_project/Presentation/Screens/Home/homepage.dart';
+
 import 'package:recipe_project/Presentation/Screens/Saved/saved.dart';
 import 'package:recipe_project/Presentation/Screens/User/profile_screen.dart';
-
+import 'package:provider/provider.dart';
 import 'Presentation/Routes/routes_generator.dart';
 
 void main() {
@@ -41,7 +42,7 @@ class MyApp extends StatelessWidget {
       title: 'Recipe Apps',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        primarySwatch: Colors.teal,
+        primarySwatch: Colors.blue,
       ),
       initialRoute: "/",
       onGenerateRoute: RouteGenerator().generateRoute,
