@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:recipe_project/Presentation/Screens/Explore/explore.dart';
 import 'package:recipe_project/Presentation/Screens/Home/homepage.dart';
 import 'package:animate_do/animate_do.dart';
+import 'package:recipe_project/Presentation/Screens/User/profile_screen.dart';
 
 enum BottomItems { Home, Explore, User }
 
@@ -55,10 +56,8 @@ class _BottomNaState extends State<BottomNa> {
               setState(
                 () {
                   selectedItems = BottomItems.Home;
-                  Future.delayed(const Duration(milliseconds: 800), () {
+                  Future.delayed(const Duration(milliseconds: 500), () {
                     Navigator.popAndPushNamed(context, '/homepage');
-
-                    return BottomNa();
                   });
                 },
               );
@@ -76,8 +75,6 @@ class _BottomNaState extends State<BottomNa> {
                 selectedItems = BottomItems.Explore;
                 Future.delayed(const Duration(milliseconds: 800), () {
                   Navigator.pushNamed(context, '/explore');
-
-                  return BottomNa();
                 });
               });
             },
@@ -94,7 +91,6 @@ class _BottomNaState extends State<BottomNa> {
                 selectedItems = BottomItems.User;
                 Future.delayed(const Duration(milliseconds: 800), () {
                   Navigator.pushNamed(context, '/user');
-                  return BottomNa();
                 });
               });
             },

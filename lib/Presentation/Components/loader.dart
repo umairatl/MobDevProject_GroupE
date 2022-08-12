@@ -30,6 +30,7 @@ class LoadingWidget extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: const [
                 WidthSpacer(myWidth: 25.50),
+                CircularProgressIndicator(),
                 Text(
                   "Loading...",
                   style: TextStyle(
