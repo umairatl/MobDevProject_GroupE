@@ -43,3 +43,7 @@ flutter:
     - assets/images/Loginpage/chef.png
     - assets/images/Loginpage/cooking.png
     - assets/images/Loginpage/chef-start.png
+    - assets/images/Loginpage/search.png
+    - assets/images/Loginpage/login.png
+    - assets/images/Loginpage/details.png
+    - assets/images/Loginpage/homepage.png
