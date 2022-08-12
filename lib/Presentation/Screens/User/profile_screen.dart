@@ -1,19 +1,33 @@
 import 'package:flutter/material.dart';
 import 'package:animate_do/animate_do.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:recipe_project/navigation/bottomNavBar.dart';
 
-class user extends StatefulWidget {
-  const user({Key? key}) : super(key: key);
-
+class User extends StatefulWidget {
   @override
-  // ignore: library_private_types_in_public_api
-  _userState createState() => _userState();
+  _UserState createState() => _UserState();
 }
 
-class _userState extends State<user> {
+class _UserState extends State<User> {
   @override
   Widget build(BuildContext context) {
+    var width = MediaQuery.of(context).size.width;
+    var height = MediaQuery.of(context).size.height;
+    const thepurple = Color(0xFF733FF1);
+    const theblue = Color(0xff202032);
+    const thewhite = Colors.white;
+    Size size = MediaQuery.of(context).size;
+
     return Scaffold(
+      appBar: AppBar(
+        elevation: 2,
+        backgroundColor: theblue,
+        title: Text("P R O F I L E",
+            style: GoogleFonts.lato(
+                color: Colors.white,
+                fontSize: 23,
+                fontWeight: FontWeight.bold)),
+      ),
       body: Column(
         children: <Widget>[
           Container(
@@ -196,7 +210,6 @@ class _userState extends State<user> {
           ),
         ],
       ),
-      bottomNavigationBar: FadeInUp(child: const BottomNa()),
     );
   }
 }

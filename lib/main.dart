@@ -27,10 +27,11 @@ class MyApp extends StatelessWidget {
         onGenerateRoute: RouteGenerator().generateRoute,
         routes: {
           '/homepage': (context) => Homepage(),
-          '/explore': (context) => explore(),
-          '/user': (context) => user(),
+          '/explore': (context) =>Explore(),
+          '/user': (context) => User(),
         },
       ),
+
     );
   }
 }
