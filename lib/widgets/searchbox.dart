@@ -26,7 +26,5 @@ class _searchBoxState extends State<searchBox> {
         ),
       ),
     );
-
-  
   }
 }
