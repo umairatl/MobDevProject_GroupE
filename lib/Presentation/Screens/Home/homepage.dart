@@ -1,9 +1,6 @@
-import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:recipe_project/Presentation/Screens/Explore/explore.dart';
 import 'package:recipe_project/Presentation/Screens/Reviews/reviews.dart';
-import 'package:recipe_project/Presentation/Screens/User/profile_screen.dart';
 import 'package:recipe_project/details.dart';
 import 'package:recipe_project/model/recipe_api.dart';
 import 'package:recipe_project/model/recipe_list.dart';
@@ -12,7 +9,6 @@ import 'package:recipe_project/widgets/recipe.dart';
 import '../../../model/review_api.dart';
 import '../../../model/review_list.dart';
 import 'package:recipe_project/model/review_list.dart';
-import 'package:loading_animation_widget/loading_animation_widget.dart';
 
 class Homepage extends StatefulWidget {
   const Homepage({Key? key}) : super(key: key);
@@ -64,30 +60,7 @@ class _HomepageState extends State<Homepage> {
   }
 
   Future<void> getReviews() async {
-    try {
-      listReview = await ReviewAPI.fetchRecipe();
-
-      setState(() {
-        isLoading = false;
-      });
-    } catch (e, st) {
-      listReview = [];
-      if (mounted) {
-        showDialog(
-          context: context,
-          builder: (context) {
-            return const AlertDialog(
-              title: Text("Error"),
-              content: Text("Cannot load data for reviews"),
-            );
-          },
-        );
-      }
-    } finally {
-      setState(() {
-        isLoading = false;
-      });
-    }
+    listReview = await ReviewAPI.fetchRecipe();
   }
 
   void navigateToDetails(BuildContext context, RecipeModel data) {
@@ -114,6 +87,7 @@ class _HomepageState extends State<Homepage> {
     var he = MediaQuery.of(context).size.height;
 
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       backgroundColor: thewhite,
       appBar: AppBar(
         elevation: 2,
@@ -130,9 +104,8 @@ class _HomepageState extends State<Homepage> {
               child: Column(
                 children: [
                   SizedBox(height: 10),
-                  Positioned(
-                    width: we * 1,
-                    height: he * 0.09,
+                  SizedBox(
+                    width: 350,
                     child: TextField(
                         controller: controller,
                         decoration: InputDecoration(
@@ -146,29 +119,15 @@ class _HomepageState extends State<Homepage> {
                                     const BorderSide(color: thepurple))),
                         onChanged: searchRecipe),
                   ),
-                  SizedBox(
-                    height: he * 0.05,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: <Widget>[
-                        Text('Menu List',
-                            style: GoogleFonts.lato(
-                              color: thepurple,
-                              fontSize: 20,
-                              fontWeight: FontWeight.bold,
-                            )),
-                        const Divider(
-                          color: theblue,
-                          height: 20,
-                          thickness: 2,
-                          indent: 20,
-                          endIndent: 0,
-                        )
-                      ],
-                    ),
+                  SizedBox(height: 10),
+                  Text(
+                    'Menu List',
+                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                    textAlign: TextAlign.left,
                   ),
                   Expanded(
                     child: ListView.builder(
+                      shrinkWrap: true,
                       scrollDirection: Axis.horizontal,
                       itemCount: listRecipes.length,
                       itemBuilder: (context, index) {
@@ -186,21 +145,15 @@ class _HomepageState extends State<Homepage> {
                       },
                     ),
                   ),
-                  SizedBox(
-                    height: he * 0.05,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        Text('Reviews',
-                            style: GoogleFonts.lato(
-                                color: thepurple,
-                                fontSize: 20,
-                                fontWeight: FontWeight.bold)),
-                      ],
-                    ),
+                  SizedBox(height: 20),
+                  Text(
+                    'User Reviews',
+                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                    textAlign: TextAlign.left,
                   ),
                   Expanded(
                     child: ListView.builder(
+                      shrinkWrap: true,
                       scrollDirection: Axis.horizontal,
                       itemCount: listReview.length,
                       itemBuilder: (context, index) {
