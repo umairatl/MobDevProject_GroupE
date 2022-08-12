@@ -1,9 +1,8 @@
-// ignore_for_file: constant_identifier_names
-
 import 'package:flutter/material.dart';
 import 'package:recipe_project/Presentation/Screens/Explore/explore.dart';
 import 'package:recipe_project/Presentation/Screens/Home/homepage.dart';
 import 'package:animate_do/animate_do.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 enum BottomItems { Home, Explore, User }
 
@@ -16,6 +15,7 @@ class BottomNa extends StatefulWidget {
 
 class _BottomNaState extends State<BottomNa> {
   BottomItems selectedItems = BottomItems.Home;
+  final Uri _url = Uri.parse('https://www.yummly.com/');
 
   void navigateToHome() {
     Navigator.pushNamed(
@@ -74,10 +74,15 @@ class _BottomNaState extends State<BottomNa> {
             onTap: () {
               setState(() {
                 selectedItems = BottomItems.Explore;
-                Future.delayed(const Duration(milliseconds: 800), () {
-                  Navigator.pushNamed(context, '/explore');
+                Future.delayed(const Duration(milliseconds: 700), () {
+                  launchUrl(_url);
 
-                  return BottomNa();
+                  // return BottomNa();
+                });
+                Future.delayed(const Duration(milliseconds: 800), () {
+                  Navigator.pushNamed(context, '/homepage');
+
+                  // return BottomNa();
                 });
               });
             },
@@ -92,9 +97,8 @@ class _BottomNaState extends State<BottomNa> {
             onTap: () {
               setState(() {
                 selectedItems = BottomItems.User;
-                Future.delayed(const Duration(milliseconds: 800), () {
+                Future.delayed(const Duration(milliseconds: 700), () {
                   Navigator.pushNamed(context, '/user');
-                  return BottomNa();
                 });
               });
             },
