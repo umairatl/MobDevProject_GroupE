@@ -13,6 +13,8 @@ class RecipeAPI {
       "useQueryString": "true"
     });
 
+    print('STATUSSSS RECIPE');
+    print(response.statusCode);
     if (response.statusCode != 200) {
       throw Exception("Error happen");
     }

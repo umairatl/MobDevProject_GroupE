@@ -120,7 +120,7 @@ class _RecipeDetailsState extends State<RecipeDetails> {
                   style: TextStyle(fontSize: 16, color: thewhite),
                 ),
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: thepurple,
+                  // backgroundColor: thepurple,
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(16),
                   ),

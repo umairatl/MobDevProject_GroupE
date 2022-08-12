@@ -32,19 +32,20 @@ class RecipeCard extends StatelessWidget {
     const thewhite = Colors.white;
 
     return Container(
-        margin: EdgeInsets.symmetric(horizontal: 15, vertical: 25),
+        margin: EdgeInsets.symmetric(horizontal: 15, vertical: 7),
+        padding: EdgeInsets.all(10),
         decoration: BoxDecoration(
           color: theblue,
-          borderRadius: BorderRadius.circular(20),
+          borderRadius: BorderRadius.circular(15),
           boxShadow: [
             BoxShadow(
               color: theblue,
               offset: Offset(
                 0.0,
-                10.0,
+                20.0,
               ),
-              blurRadius: 10.0,
-              spreadRadius: -6.0,
+              blurRadius: 7.0,
+              spreadRadius: -7.0,
             ),
           ],
         ),
@@ -57,7 +58,7 @@ class RecipeCard extends StatelessWidget {
             mainAxisSize: MainAxisSize.min,
             children: [
               SizedBox(
-                width: 220,
+                width: 230,
                 child: Image.network(thumbnailUrl,
                     loadingBuilder: (context, child, loadingProgress) {
                   if (loadingProgress == null) {
@@ -73,38 +74,20 @@ class RecipeCard extends StatelessWidget {
                   );
                 }),
               ),
-
-              Text(title,
+              SizedBox(height: 5),
+              SizedBox(
+                width: 240,
+                child: Text(
+                  title,
                   style: TextStyle(
-                      fontSize: 17,
-                      fontWeight: FontWeight.w500,
-                      color: thewhite,
-                      overflow: TextOverflow.ellipsis)),
-              Container(
-                padding: EdgeInsets.all(5),
-                margin: EdgeInsets.all(2),
-                decoration: BoxDecoration(
-                  color: thepurple,
-                  borderRadius: BorderRadius.circular(15),
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white),
+                  textAlign: TextAlign.center,
                 ),
-                // child: Row(
-                //     children: List.generate(
-                //   rating,
-                //   (index) => IconButton(
-                //     icon: Icon(Icons.star, size: 18),
-                //     color: Colors.yellow,
-                //     onPressed: () {},
-                //   ),
-                // )),
               ),
-              // SizedBox(
-              //   width: 300,
-              //   child: Text('" $\\ "', textAlign: TextAlign.center),
-              // )
             ],
           ),
-          // alignment: Alignment.bottomLeft,
         ));
-    // ));
   }
 }
