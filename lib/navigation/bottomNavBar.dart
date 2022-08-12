@@ -1,6 +1,7 @@
 // ignore_for_file: constant_identifier_names
 
 import 'package:flutter/material.dart';
+import 'package:recipe_project/Presentation/Screens/Explore/explore.dart';
 import 'package:recipe_project/Presentation/Screens/Home/homepage.dart';
 import 'package:animate_do/animate_do.dart';
 
@@ -54,7 +55,11 @@ class _BottomNaState extends State<BottomNa> {
               setState(
                 () {
                   selectedItems = BottomItems.Home;
-                  Navigator.pushNamed(context, '/homepage');
+                  Future.delayed(const Duration(milliseconds: 800), () {
+                    Navigator.popAndPushNamed(context, '/homepage');
+
+                    return BottomNa();
+                  });
                 },
               );
             },
@@ -69,7 +74,11 @@ class _BottomNaState extends State<BottomNa> {
             onTap: () {
               setState(() {
                 selectedItems = BottomItems.Explore;
-                Navigator.pushNamed(context, '/explore');
+                Future.delayed(const Duration(milliseconds: 800), () {
+                  Navigator.pushNamed(context, '/explore');
+
+                  return BottomNa();
+                });
               });
             },
             child: selectedItems == BottomItems.Explore
@@ -83,7 +92,10 @@ class _BottomNaState extends State<BottomNa> {
             onTap: () {
               setState(() {
                 selectedItems = BottomItems.User;
-                Navigator.pushNamed(context, '/user');
+                Future.delayed(const Duration(milliseconds: 800), () {
+                  Navigator.pushNamed(context, '/user');
+                  return BottomNa();
+                });
               });
             },
             child: selectedItems == BottomItems.User

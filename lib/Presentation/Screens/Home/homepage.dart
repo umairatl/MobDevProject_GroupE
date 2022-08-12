@@ -1,7 +1,9 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:recipe_project/Presentation/Screens/Explore/explore.dart';
 import 'package:recipe_project/Presentation/Screens/Reviews/reviews.dart';
+import 'package:recipe_project/Presentation/Screens/User/profile_screen.dart';
 import 'package:recipe_project/details.dart';
 import 'package:recipe_project/model/recipe_api.dart';
 import 'package:recipe_project/model/recipe_list.dart';
@@ -10,6 +12,7 @@ import 'package:recipe_project/widgets/recipe.dart';
 import '../../../model/review_api.dart';
 import '../../../model/review_list.dart';
 import 'package:recipe_project/model/review_list.dart';
+import 'package:loading_animation_widget/loading_animation_widget.dart';
 
 class Homepage extends StatefulWidget {
   const Homepage({Key? key}) : super(key: key);
@@ -115,16 +118,14 @@ class _HomepageState extends State<Homepage> {
       appBar: AppBar(
         elevation: 2,
         backgroundColor: theblue,
-
         title: Text("H O M E",
             style: GoogleFonts.lato(
                 color: Colors.white,
                 fontSize: 23,
                 fontWeight: FontWeight.bold)),
-
       ),
       body: isLoading
-          ? Center(child: CircularProgressIndicator())
+          ? const Center(child: CircularProgressIndicator())
           : SizedBox(
               child: Column(
                 children: [
@@ -133,28 +134,36 @@ class _HomepageState extends State<Homepage> {
                     width: we * 1,
                     height: he * 0.09,
                     child: TextField(
-                      controller: controller,
-                      decoration: InputDecoration(
-                          prefixIcon:
-                              const Icon(Icons.search, color: thepurple),
-                          hintText: 'Search Recipe Title',
-                          hintStyle: TextStyle(color: theblue),
-                          border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(20),
-                              borderSide: const BorderSide(color: thepurple))),
-                      onChanged: searchRecipe
-                    ),
+                        controller: controller,
+                        decoration: InputDecoration(
+                            prefixIcon:
+                                const Icon(Icons.search, color: thepurple),
+                            hintText: 'Search Recipe Title',
+                            hintStyle: TextStyle(color: theblue),
+                            border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(20),
+                                borderSide:
+                                    const BorderSide(color: thepurple))),
+                        onChanged: searchRecipe),
                   ),
                   SizedBox(
                     height: he * 0.05,
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
+                      children: <Widget>[
                         Text('Menu List',
                             style: GoogleFonts.lato(
-                                color: thepurple,
-                                fontSize: 20,
-                                fontWeight: FontWeight.bold)),
+                              color: thepurple,
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold,
+                            )),
+                        const Divider(
+                          color: theblue,
+                          height: 20,
+                          thickness: 2,
+                          indent: 20,
+                          endIndent: 0,
+                        )
                       ],
                     ),
                   ),
@@ -208,7 +217,7 @@ class _HomepageState extends State<Homepage> {
                 ],
               ),
             ),
-      bottomNavigationBar: FadeInUp(child:const  BottomNa()),
+      bottomNavigationBar: BottomNa(),
     );
   }
 }

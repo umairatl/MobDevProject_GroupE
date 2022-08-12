@@ -1,6 +1,7 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:recipe_project/Presentation/Components/loader.dart';
 
 import '../../../navigation/bottomNavBar.dart';
@@ -20,14 +21,18 @@ class _ExploreState extends State<Explore> {
     const thewhite = Colors.white;
     Size size = MediaQuery.of(context).size;
 
-    
     return Scaffold(
       backgroundColor: thewhite,
-      body: Container(
-        width: width,
-        height: height,
+      appBar: AppBar(
+        elevation: 2,
+        backgroundColor: theblue,
+        title: Text("E X P L O R E",
+            style: GoogleFonts.lato(
+                color: Colors.white,
+                fontSize: 23,
+                fontWeight: FontWeight.bold)),
       ),
-      bottomNavigationBar: BottomNa(),
+      
     );
   }
 }
