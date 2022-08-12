@@ -11,7 +11,7 @@ class ReviewAPI {
     });
 
     final response = await http.get(uri, headers: {
-      "x-rapidapi-key": "a06cce8776msha21281ada514d1dp1bc50fjsn0f61459805e1",
+      "x-rapidapi-key": "9abf0e5683mshf0de64648d9a8e3p157a51jsn7d6e7c89cf1e",
       "x-rapidapi-host": "yummly2.p.rapidapi.com",
       "useQueryString": "true"
     });
