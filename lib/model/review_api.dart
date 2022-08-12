@@ -16,8 +16,6 @@ class ReviewAPI {
       "useQueryString": "true"
     });
 
-    print('STATUSSSS');
-    print(response.statusCode);
     if (response.statusCode != 200) {
       throw Exception("Error happened");
     }
